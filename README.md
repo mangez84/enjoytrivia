@@ -30,6 +30,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 #### Frequent Player Goals
 
+- As a frequent player, I want to be able to increase the difficulty further with configurable time limits for the questions.
+- As a frequent player, I want to be able to contact the developer of the game and give feedback.
+
 ### Developer Goals
 
 ### Wireframes
