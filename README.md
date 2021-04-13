@@ -21,6 +21,13 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 #### New Player Goals
 
+- As a new player, I want to be able to get questions from a specific category.
+- As a new player, I want to be able to choose the level of difficulty.
+- As a new player, I want to be able to choose the number of questions.
+- As a new player, I want to be able to see a scoreboard that shows the number of correct and incorrect answers.
+- As a new player, I want to be able to reset the game and start over.
+- As a new player, I want to be able to play the game on my computer, tablet or smartphone.
+
 #### Frequent Player Goals
 
 ### Developer Goals
