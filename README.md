@@ -29,6 +29,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - As a new player, I want to be able to play the game on my computer, tablet and smartphone.
 - As a new player, I want to be celebrated if I answer all the questions correctly.
 - As a new player, I want to clearly see the question and the choices available for answers.
+- As a new player, I want the correct answer to be displayed even if I answer incorrectly.
 
 #### Frequent Player Goals
 
