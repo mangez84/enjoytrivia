@@ -46,3 +46,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - Create a good gaming experience that is also a source of knowledge.
 
 ### Wireframes
+
+- [Index Page](assets/wireframes/index.pdf)
+- [Give Feedback](assets/wireframes/givefeedback.pdf)
+- [Create Game](assets/wireframes/creategame.pdf)
+- [Play Game](assets/wireframes/playgame.pdf)
+- [Victory](assets/wireframes/victory.pdf)
