@@ -40,4 +40,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ### Developer Goals
 
+- Strengthen my skills in HTML5, CSS and JavaScript.
+- Create a well-structured website with good error handling and clear feedback to users.
+- Have fun working with APIs.
+- Create a good gaming experience that is also a source of knowledge.
+
 ### Wireframes
