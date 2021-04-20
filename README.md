@@ -14,6 +14,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
         - [Frequent Player Goals](#frequent-player-goals)
     - [Developer Goals](#developer-goals)
     - [Wireframes](#wireframes)
+2. [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement](#features-left-to-implement)
 
 ## UX
 
@@ -52,3 +55,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - [Create Game](assets/wireframes/creategame.pdf)
 - [Play Game](assets/wireframes/playgame.pdf)
 - [Victory](assets/wireframes/victory.pdf)
+
+## Features
+
+### Existing Features
+
+### Features Left to Implement
