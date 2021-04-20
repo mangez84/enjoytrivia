@@ -60,4 +60,12 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ### Existing Features
 
+- Clear navigation which makes it easy to start a game.
+- Options are available to configure the game with the desired category, difficulty and number of questions.
+- The type option can be used to select multiple choice questions or true or false questions.
+- A scoreboard that shows the number of correct and incorrect answers.
+- The game can be played on computers, tablets and smartphones.
+- Good visual feedback when a question is answered correctly or incorrectly.
+- It is possible to send feedback to the developer using a form.
+
 ### Features Left to Implement
