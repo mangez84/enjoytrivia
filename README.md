@@ -67,5 +67,10 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - The game can be played on computers, tablets and smartphones.
 - Good visual feedback when a question is answered correctly or incorrectly.
 - It is possible to send feedback to the developer using a form.
+- A time-based mode that further challenges the player.
+- A source of knowledge because the correct answer is highlighted if the player should answer incorrectly.
+- If all questions are answered correctly, the player is rewarded with a celebration.
 
 ### Features Left to Implement
+
+- None at the moment.
