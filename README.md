@@ -17,6 +17,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 2. [Features](#features)
     - [Existing Features](#existing-features)
     - [Features Left to Implement](#features-left-to-implement)
+3. [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+    - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
 
 ## UX
 
@@ -74,3 +77,16 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 ### Features Left to Implement
 
 - None at the moment.
+
+## Technologies Used
+
+### Languages Used
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+
+### Frameworks, Libraries and Software Used
+
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    - The project uses the grid system, flex utilities, the offcanvas component and forms from the Bootstrap 5.0 framework.
+    
