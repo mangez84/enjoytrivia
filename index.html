@@ -33,11 +33,12 @@
           <section>
             <div class="d-flex justify-content-center">
               <!-- 
-                This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified 
-                to create the offcanvas component for the "Create Game" section.
+                This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ 
+                and later modified to create the offcanvas component for the "Create Game" section.
               -->
               <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create Game</button>
+                data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create
+                Game</button>
             </div>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
               aria-labelledby="offcanvasCreateGameLabel">
@@ -47,7 +48,45 @@
                   aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
-                <p>Create Game</p>
+                <!-- Most of the code below has been copied from the examples available at 
+                  https://getbootstrap.com/docs/5.0/forms/overview/ 
+                -->
+                <form>
+                  <div class="mb-3">
+                    <label for="form-category" class="form-label">Category</label>
+                    <!-- Get the categories from the OpenTriviaDB API with JavaScript -->
+                    <select class="form-select form-select-sm" id="form-category" aria-label="Choose Category">
+                      <option selected>Choose Category</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="form-difficulty" class="form-label">Difficulty</label>
+                    <select class="form-select form-select-sm" id="form-difficulty" aria-label="Choose Difficulty">
+                      <option selected>Choose Difficulty</option>
+                      <option value="">Any Difficulty</option>
+                      <option value="easy">Easy</option>
+                      <option value="medium">Medium</option>
+                      <option value="hard">Hard</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="form-type" class="form-label">Type</label>
+                    <select class="form-select form-select-sm" id="form-type" aria-label="Choose Type">
+                      <option selected>Choose Type</option>
+                      <option value="">Any Type</option>
+                      <option value="multiple">Multiple Choice</option>
+                      <option value="boolean">True / False</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="form-number" class="form-label">Number of Questions</label>
+                    <div class=" d-flex justify-content-between">
+                      <input type="range" class="form-range" min="1" max="50" id="form-number"
+                        aria-label="Number of Questions">
+                      <span class="border border-dark">1</span>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </section>
