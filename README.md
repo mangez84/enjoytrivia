@@ -20,6 +20,8 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 3. [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
     - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
+4. [Credits](#credits)
+    - [Code](#code)
 
 ## UX
 
@@ -89,4 +91,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 - [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
     - The project uses the grid system, flex utilities, the offcanvas component and forms from the Bootstrap 5.0 framework.
-    
+
+## Credits
+
+### Code
+
+- Code to obtain API data using the fetch() method was copied from this [JavaScript Tutorial](https://www.javascripttutorial.net/javascript-fetch-api/) post. This post also has good descriptions on how to handle asynchronous HTTP requests reliably.
