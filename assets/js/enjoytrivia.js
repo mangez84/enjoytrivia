@@ -21,7 +21,7 @@ Use the jQuery .one() method to only call the API on the first click.
 A large part of the code below was copied from https://www.javascripttutorial.net/javascript-fetch-api/ and later modified.
 */
 
-$("#form-category").one("click", displayOpenTriviaCategories)
+$("#form-category").one("click", displayOpenTriviaCategories);
 
 async function displayOpenTriviaCategories() {
   let categoriesHTML = $("#form-category").html();
