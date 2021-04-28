@@ -60,17 +60,36 @@ The code below was copied from https://stackoverflow.com/questions/169506/obtain
 
 $("#form-main").submit(function (event) {
   event.preventDefault();
-  let values = $(this).serialize();
-  startGame(values);
+  let optionURI = $(this).serialize();
+  displayOpenTriviaQuestions(optionURI);
 });
 
 /*
-Temporary function to "start" game.
+Temporary function to "start" the game and display questions.
 Remove the offcanvas backdrop effect from the body when starting the game.
+Currently used for testing the API and debugging.
 */
 
-function startGame(options) {
+async function displayOpenTriviaQuestions(optionURI) {
   $("body").removeAttr("class data-bs-padding-right style");
-  $(".game-area").addClass("d-flex justify-content-center");
-  $(".game-area").html(`<p>${options}</p>`);
+  $(".game-area").addClass("d-flex flex-wrap justify-content-center align-content-between");
+  $(".game-area").html("");
+  let questionsHTML = '';
+  let answersHTML = '';
+  let questionsURI = 'api.php?' + optionURI;
+  let questions = await getOpenTriviaData(questionsURI);
+  questions.results.forEach(question => {
+    let questionsHTMLOption = `<p class="text-center">${question.question}</p>`;
+    questionsHTML += questionsHTMLOption;
+    let answersHTMLOption = `<p class="text-center">${question.correct_answer}</p>`;
+    answersHTML += answersHTMLOption;
+    question.incorrect_answers.forEach(incorrect_answer => {
+      console.log(incorrect_answer);
+    });
+  });
+
+  $(".game-area").append('<div class="question-area w-100"></div>');
+  $(".game-area").append('<div class="answer-area w-100"></div>');
+  $(".question-area").html(questionsHTML);
+  $(".answer-area").html(answersHTML);
 }
