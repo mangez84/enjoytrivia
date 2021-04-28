@@ -18,8 +18,7 @@ async function getOpenTriviaData(optionURI) {
 /* 
 Get trivia categories when clicking on "Choose Category".
 Use the jQuery .one() method to only call the API on the first click. 
-A large part of the code below was copied from 
-https://www.javascripttutorial.net/javascript-fetch-api/ and later modified.
+A large part of the code below was copied from https://www.javascripttutorial.net/javascript-fetch-api/ and later modified.
 */
 
 $("#form-category").one("click", displayOpenTriviaCategories)
@@ -53,3 +52,25 @@ $("#form-time-duration").on("input", function () {
   let value = $(this).val();
   $("#form-time-duration-counter").html(value);
 });
+
+/* 
+Gather the values from the form and create the URI for the API call.
+The code below was copied from https://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery/1443005#1443005 and later modified.
+*/
+
+$("#form-main").submit(function (event) {
+  event.preventDefault();
+  let values = $(this).serialize();
+  startGame(values);
+});
+
+/*
+Temporary function to "start" game.
+Remove the offcanvas backdrop effect from the body when starting the game.
+*/
+
+function startGame(options) {
+  $("body").removeAttr("class data-bs-padding-right style");
+  $(".game-area").addClass("d-flex justify-content-center");
+  $(".game-area").html(`<p>${options}</p>`);
+}

@@ -28,78 +28,83 @@
       <div class="row">
         <div class="col-12">
           <section>
-            <div class="d-flex justify-content-center">
-              <!-- 
+            <div class="game-area">
+              <div class="d-flex justify-content-center">
+                <!-- 
               This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
               for the "Create Game" section.
               -->
-              <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create Game</button>
-            </div>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
-              aria-labelledby="offcanvasCreateGameLabel">
-              <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasCreateGameLabel">Create Game</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                  aria-label="Close"></button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create Game</button>
               </div>
-              <div class="offcanvas-body">
-                <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
-                <form>
-                  <!-- Get the categories from the OpenTriviaDB API with JavaScript. -->
-                  <div class="mb-3">
-                    <label for="form-category" class="form-label">Category</label>
-                    <select class="form-select form-select-sm" id="form-category" aria-label="Choose Category">
-                      <option value="default" selected>Choose Category</option>
-                    </select>
-                  </div>
-                  <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
-                  <div class="mb-3">
-                    <label for="form-difficulty" class="form-label">Difficulty</label>
-                    <select class="form-select form-select-sm" id="form-difficulty" aria-label="Choose Difficulty">
-                      <option value="default" selected>Choose Difficulty</option>
-                      <option value="">Any Difficulty</option>
-                      <option value="easy">Easy</option>
-                      <option value="medium">Medium</option>
-                      <option value="hard">Hard</option>
-                    </select>
-                  </div>
-                  <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
-                  <div class="mb-3">
-                    <label for="form-type" class="form-label">Type</label>
-                    <select class="form-select form-select-sm" id="form-type" aria-label="Choose Type">
-                      <option value="default" selected>Choose Type</option>
-                      <option value="">Any Type</option>
-                      <option value="multiple">Multiple Choice</option>
-                      <option value="boolean">True / False</option>
-                    </select>
-                  </div>
-                  <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
-                  <div class="mb-3">
-                    <label for="form-number" class="form-label">Number of Questions</label>
-                    <div class="d-flex justify-content-between">
-                      <input type="range" class="form-range w-75" min="1" max="50" value="1" id="form-number"
-                        aria-label="Number of Questions">
-                      <output for="form-number" id="form-number-counter">1</output>
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
+                aria-labelledby="offcanvasCreateGameLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasCreateGameLabel">Create Game</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
+                  <form id="form-main">
+                    <!-- Get the categories from the OpenTriviaDB API with JavaScript. -->
+                    <div class="mb-3">
+                      <label for="form-category" class="form-label">Category</label>
+                      <select class="form-select form-select-sm" id="form-category" name="category"
+                        aria-label="Choose Category">
+                        <option value="" selected>Choose Category</option>
+                      </select>
                     </div>
-                  </div>
-                  <!-- Use flexbox to get some space between the label and input elements. -->
-                  <div class="mb-3 form-check form-switch p-0 d-flex justify-content-between">
-                    <label class="form-check-label" for="form-time-switch">Time-Based Mode</label>
-                    <input class="form-check-input float-none" type="checkbox" id="form-time-switch">
-                  </div>
-                  <div class="mb-3">
-                    <label for="form-number" class="form-label">Time-Based Duration</label>
-                    <div class="d-flex justify-content-between">
-                      <input type="range" class="form-range w-75" min="10" max="60" value="10" id="form-time-duration"
-                        aria-label="Time-Based Duration">
-                      <output for="form-number" id="form-time-duration-counter">10</output>
+                    <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
+                    <div class="mb-3">
+                      <label for="form-difficulty" class="form-label">Difficulty</label>
+                      <select class="form-select form-select-sm" id="form-difficulty" name="difficulty"
+                        aria-label="Choose Difficulty">
+                        <option value="" selected>Choose Difficulty</option>
+                        <option value="">Any Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                      </select>
                     </div>
-                  </div>
-                  <div class="mb-3 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary" id="form-start-game">Start Game</button>
-                  </div>
-                </form>
+                    <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
+                    <div class="mb-3">
+                      <label for="form-type" class="form-label">Type</label>
+                      <select class="form-select form-select-sm" id="form-type" name="type" aria-label="Choose Type">
+                        <option value="" selected>Choose Type</option>
+                        <option value="">Any Type</option>
+                        <option value="multiple">Multiple Choice</option>
+                        <option value="boolean">True / False</option>
+                      </select>
+                    </div>
+                    <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
+                    <div class="mb-3">
+                      <label for="form-number" class="form-label">Number of Questions</label>
+                      <div class="d-flex justify-content-between">
+                        <input type="range" class="form-range w-75" min="1" max="50" value="1" id="form-number"
+                          name="amount" aria-label="Number of Questions">
+                        <output for="form-number" id="form-number-counter">1</output>
+                      </div>
+                    </div>
+                    <!-- Use flexbox to get some space between the label and input elements. -->
+                    <div class="mb-3 form-check form-switch p-0 d-flex justify-content-between">
+                      <label class="form-check-label" for="form-time-switch">Time-Based Mode</label>
+                      <input class="form-check-input float-none" type="checkbox" id="form-time-switch"
+                        name="form-time-switch" disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="form-number" class="form-label">Time-Based Duration</label>
+                      <div class="d-flex justify-content-between">
+                        <input type="range" class="form-range w-75" min="10" max="60" value="10" id="form-time-duration"
+                          name="form-time-duration" aria-label="Time-Based Duration" disabled>
+                        <output for="form-number" id="form-time-duration-counter">10</output>
+                      </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary" id="form-start-game">Start Game</button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </section>
