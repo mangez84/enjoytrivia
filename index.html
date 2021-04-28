@@ -11,10 +11,7 @@
 </head>
 
 <body>
-  <!-- 
-    Main container for positioning elements with Bootstrap v5.0 flex utilities.
-    https://getbootstrap.com/docs/5.0/utilities/flex/
-  -->
+  <!-- Main container for positioning elements with Bootstrap v5.0 flex utilities. https://getbootstrap.com/docs/5.0/utilities/flex/ -->
   <div class="min-vh-100 d-flex flex-wrap align-content-between">
     <div class="container-fluid">
       <div class="row">
@@ -33,12 +30,11 @@
           <section>
             <div class="d-flex justify-content-center">
               <!-- 
-                This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ 
-                and later modified to create the offcanvas component for the "Create Game" section.
+              This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
+              for the "Create Game" section.
               -->
               <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create
-                Game</button>
+                data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create Game</button>
             </div>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
               aria-labelledby="offcanvasCreateGameLabel">
@@ -48,18 +44,16 @@
                   aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
-                <!-- 
-                  Most of the code below has been copied from the examples available at 
-                  https://getbootstrap.com/docs/5.0/forms/overview/
-                -->
+                <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
                 <form>
+                  <!-- Get the categories from the OpenTriviaDB API with JavaScript. -->
                   <div class="mb-3">
                     <label for="form-category" class="form-label">Category</label>
-                    <!-- Get the categories from the OpenTriviaDB API with JavaScript -->
                     <select class="form-select form-select-sm" id="form-category" aria-label="Choose Category">
                       <option value="default" selected>Choose Category</option>
                     </select>
                   </div>
+                  <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
                   <div class="mb-3">
                     <label for="form-difficulty" class="form-label">Difficulty</label>
                     <select class="form-select form-select-sm" id="form-difficulty" aria-label="Choose Difficulty">
@@ -70,6 +64,7 @@
                       <option value="hard">Hard</option>
                     </select>
                   </div>
+                  <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
                   <div class="mb-3">
                     <label for="form-type" class="form-label">Type</label>
                     <select class="form-select form-select-sm" id="form-type" aria-label="Choose Type">
@@ -79,14 +74,16 @@
                       <option value="boolean">True / False</option>
                     </select>
                   </div>
+                  <!-- Use fixed values from the API documentation as the values cannot be obtained with an API call. -->
                   <div class="mb-3">
                     <label for="form-number" class="form-label">Number of Questions</label>
                     <div class="d-flex justify-content-between">
-                      <input type="range" class="form-range" min="1" max="50" value="1" id="form-number"
+                      <input type="range" class="form-range w-75" min="1" max="50" value="1" id="form-number"
                         aria-label="Number of Questions">
-                      <span class="border border-dark">1</span>
+                      <output for="form-number" id="form-number-counter">1</output>
                     </div>
                   </div>
+                  <!-- Use flexbox to get some space between the label and input elements. -->
                   <div class="mb-3 form-check form-switch p-0 d-flex justify-content-between">
                     <label class="form-check-label" for="form-time-switch">Time-Based Mode</label>
                     <input class="form-check-input float-none" type="checkbox" id="form-time-switch">
@@ -94,9 +91,9 @@
                   <div class="mb-3">
                     <label for="form-number" class="form-label">Time-Based Duration</label>
                     <div class="d-flex justify-content-between">
-                      <input type="range" class="form-range" min="10" max="60" value="10" id="form-time-duration"
+                      <input type="range" class="form-range w-75" min="10" max="60" value="10" id="form-time-duration"
                         aria-label="Time-Based Duration">
-                      <span class="border border-dark">10</span>
+                      <output for="form-number" id="form-time-duration-counter">10</output>
                     </div>
                   </div>
                   <div class="mb-3 d-flex justify-content-center">

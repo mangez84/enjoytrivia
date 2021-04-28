@@ -10,7 +10,7 @@ async function getOpenTriviaData(optionURI) {
     let response = await fetch(completeURL);
     return await response.json();
   } catch (error) {
-    let errorMessage = 'Failed to load data from API. Please reload page and try again.';
+    let errorMessage = 'Failed to load data from the OpenTriviaDB API. Please reload page and try again.';
     alert(errorMessage);
   }
 }
@@ -35,3 +35,21 @@ async function displayOpenTriviaCategories() {
 
   $("#form-category").html(categoriesHTML);
 }
+
+/* 
+A basic display of the number of questions.
+*/
+
+$("#form-number").on("input", function () {
+  let value = $(this).val();
+  $("#form-number-counter").html(value);
+});
+
+/* 
+A basic display of the time limit for each question.
+*/
+
+$("#form-time-duration").on("input", function () {
+  let value = $(this).val();
+  $("#form-time-duration-counter").html(value);
+});
