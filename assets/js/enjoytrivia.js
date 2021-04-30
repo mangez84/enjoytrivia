@@ -92,9 +92,12 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   let questionsURI = "api.php?" + optionsURI;
   let questions = await getOpenTriviaData(questionsURI);
   let interval = timeInterval * 1000;
-  let questionsHTML = "";
-  let answersHTML = "";
-  let answersArray = [];
+  let questionsHTML;
+  let answersHTML;
+  let answersArray;
+  let submittedAnswer;
+  let correctAnswer;
+  let questionResult;
   let promise = Promise.resolve();
 
   questions.results.forEach(function (question) {
@@ -102,8 +105,9 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
       $(".question-area").html("");
       $(".answer-area").html("");
 
+      correctAnswer = question.correct_answer;
       answersArray = question.incorrect_answers;
-      answersArray.push(question.correct_answer);
+      answersArray.push(correctAnswer);
       if (question.type === "multiple") {
         answersArray = shuffle(answersArray);
       }
@@ -116,12 +120,33 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
       $(".question-area").html(questionsHTML);
       $(".answer-area").html(answersHTML);
 
+      $(".answer-area > button").click(function () {
+        submittedAnswer = $(this).html();
+        questionResult = checkAnswer(submittedAnswer, correctAnswer);
+        console.log(questionResult);
+      });
+
       return new Promise(function (resolve) {
         setTimeout(resolve, interval);
       });
     });
   });
 }
+
+/*
+Check the answer
+*/
+
+function checkAnswer(submittedAnswer, correctAnswer) {
+  let questionResult;
+  if (submittedAnswer === correctAnswer) {
+    questionResult = "correct";
+  } else {
+    questionResult = "incorrect";
+  }
+  return questionResult;
+}
+
 
 /*
 The function below was copied in its entirety from
