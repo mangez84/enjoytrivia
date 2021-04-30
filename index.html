@@ -89,15 +89,14 @@
                     <!-- Use flexbox to get some space between the label and input elements. -->
                     <div class="mb-3 form-check form-switch p-0 d-flex justify-content-between">
                       <label class="form-check-label" for="form-time-switch">Time-Based Mode</label>
-                      <input class="form-check-input float-none" type="checkbox" id="form-time-switch"
-                        name="form-time-switch" disabled>
+                      <input class="form-check-input float-none" type="checkbox" id="form-time-switch">
                     </div>
                     <div class="mb-3">
-                      <label for="form-number" class="form-label">Time-Based Duration</label>
+                      <label for="form-number" class="form-label">Time-Based Duration (seconds)</label>
                       <div class="d-flex justify-content-between">
-                        <input type="range" class="form-range w-75" min="10" max="60" value="10" id="form-time-duration"
-                          name="form-time-duration" aria-label="Time-Based Duration" disabled>
-                        <output for="form-number" id="form-time-duration-counter">10</output>
+                        <input type="range" class="form-range w-75" min="5" max="60" value="60" id="form-time-duration"
+                          aria-label="Time-Based Duration" disabled>
+                        <output for="form-number" id="form-time-duration-counter">60</output>
                       </div>
                     </div>
                     <div class="mb-3 d-flex justify-content-center">
