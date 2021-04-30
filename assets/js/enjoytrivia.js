@@ -3,15 +3,15 @@ Main function to obtain data from the API.
 Call this function to build a complete URL and to obtain data.  
 */
 
-async function getOpenTriviaData(optionURI) {
+async function getOpenTriviaData(optionsURI) {
   let baseURL = "https://opentdb.com/";
-  let completeURL = baseURL + optionURI;
+  let completeURL = baseURL + optionsURI;
   try {
     let response = await fetch(completeURL);
     return await response.json();
   } catch (error) {
     let errorMessage = "Failed to load data from the OpenTriviaDB API. Please reload page and try again.";
-    alert(errorMessage);
+    alert(error.name + ": " + errorMessage);
   }
 }
 
@@ -91,7 +91,6 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
 
   let questionsURI = "api.php?" + optionsURI;
   let questions = await getOpenTriviaData(questionsURI);
-  let interval = timeInterval * 1000;
   let questionsHTML;
   let answersHTML;
   let answersArray;
@@ -123,11 +122,19 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
       $(".answer-area > button").click(function () {
         submittedAnswer = $(this).html();
         questionResult = checkAnswer(submittedAnswer, correctAnswer);
-        console.log(questionResult);
+        if (questionResult === "correct") {
+          $(this).removeClass("btn-primary").addClass("btn-success");
+          $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
+        } else if (questionResult === "incorrect") {
+          $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+          $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
+        } else {
+          alert("Unable to check the answer. Please reload page and try again.");
+        }
       });
 
       return new Promise(function (resolve) {
-        setTimeout(resolve, interval);
+        setTimeout(resolve, timeInterval * 1000);
       });
     });
   });
