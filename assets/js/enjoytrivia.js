@@ -90,53 +90,53 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $(".game-area").append('<div class="answer-area w-100"></div>');
 
   let questionsURI = "api.php?" + optionsURI;
-  let questions = await getOpenTriviaData(questionsURI);
+  let questionsRecieved = await getOpenTriviaData(questionsURI);
+  let questionsArray = questionsRecieved.results;
+  let questionIndex = 0;
+  displayNextQuestion(questionsArray, questionIndex);
+}
+
+/*
+Display next question
+*/
+
+function displayNextQuestion(questionsArray, questionIndex) {
+  $(".question-area").html("");
+  $(".answer-area").html("");
   let questionsHTML;
   let answersHTML;
   let answersArray;
   let submittedAnswer;
   let correctAnswer;
   let questionResult;
-  let promise = Promise.resolve();
-
-  questions.results.forEach(function (question) {
-    promise = promise.then(function () {
-      $(".question-area").html("");
-      $(".answer-area").html("");
-
-      correctAnswer = question.correct_answer;
-      answersArray = question.incorrect_answers;
-      answersArray.push(correctAnswer);
-      if (question.type === "multiple") {
-        answersArray = shuffle(answersArray);
-      }
-
-      questionsHTML = `<p class="text-center">${question.question}</p>`
-      answersHTML = answersArray.map(function (answer) {
-        return `<button class="btn btn-primary text-center">${answer}</button>`
-      })
-
-      $(".question-area").html(questionsHTML);
-      $(".answer-area").html(answersHTML);
-
-      $(".answer-area > button").click(function () {
-        submittedAnswer = $(this).html();
-        questionResult = checkAnswer(submittedAnswer, correctAnswer);
-        if (questionResult === "correct") {
-          $(this).removeClass("btn-primary").addClass("btn-success");
-          $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
-        } else if (questionResult === "incorrect") {
-          $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
-          $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
-        } else {
-          alert("Unable to check the answer. Please reload page and try again.");
-        }
-      });
-
-      return new Promise(function (resolve) {
-        setTimeout(resolve, timeInterval * 1000);
-      });
-    });
+  let question;
+  question = questionsArray[questionIndex];
+  correctAnswer = question.correct_answer;
+  answersArray = question.incorrect_answers;
+  answersArray.push(correctAnswer);
+  if (question.type === "multiple") {
+    answersArray = shuffle(answersArray);
+  }
+  questionsHTML = `<p class="text-center">${question.question}</p>`
+  answersHTML = answersArray.map(function (answer) {
+    return `<button class="btn btn-primary text-center">${answer}</button>`
+  })
+  $(".question-area").html(questionsHTML);
+  $(".answer-area").html(answersHTML);
+  $(".answer-area > button").click(function () {
+    submittedAnswer = $(this).html();
+    questionResult = checkAnswer(submittedAnswer, correctAnswer);
+    if (questionResult === "correct") {
+      $(this).removeClass("btn-primary").addClass("btn-success");
+      $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
+    } else if (questionResult === "incorrect") {
+      $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+      $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
+    }
+    questionIndex += 1;
+    setTimeout(() => {
+      displayNextQuestion(questionsArray, questionIndex)
+    }, 2000);
   });
 }
 
