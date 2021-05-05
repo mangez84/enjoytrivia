@@ -84,10 +84,19 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $("body").removeAttr("class data-bs-padding-right style");
   $(".game-area").html("");
   $(".game-area").addClass("d-flex flex-wrap justify-content-center align-content-between");
+  let scoresHTML = `
+    <div class="score-area w-100">
+      <h2>Score:</h2>
+      <h3>Correct:</h3>
+      <p class="score-area-correct">0</p>
+      <h3>Incorrect:</h3>
+      <p class="score-area-incorrect">0</p>
+      <h3>Points:</h3>
+      <p class="score-area-points">0</p>
+    </div>`;
+  $(".game-area").append(scoresHTML);
   $(".game-area").append('<div class="question-area w-100"></div>');
   $(".game-area").append('<div class="answer-area w-100"></div>');
-  $(".question-area").html("");
-  $(".answer-area").html("");
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI);
   let questionsArray = questionsRecieved.results;
@@ -96,31 +105,37 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
 }
 
 /*
-Display next question when an answer is submitted
+Display the next question when an answer is submitted
 */
 
 function displayNextQuestion(questionsArray, questionIndex) {
   if (questionIndex < questionsArray.length) {
     let questionCurrent = questionsArray[questionIndex];
     let correctAnswer = questionCurrent.correct_answer;
-    let questionsHTML = `<p class="text-center">${questionCurrent.question}</p>`
+    let questionsHTML = `
+      <h2 class="text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
+      <p class="text-center">${questionCurrent.question}</p>`;
     let answersArray = questionCurrent.incorrect_answers;
     answersArray.push(correctAnswer);
     answersArray = shuffle(answersArray);
     let answersHTML = answersArray.map(function (answer) {
-      return `<button class="btn btn-primary text-center">${answer}</button>`
+      return `<button class="btn btn-primary text-center">${answer}</button>`;
     });
     $(".question-area").html(questionsHTML);
     $(".answer-area").html(answersHTML);
     $(".answer-area > button").click(function () {
+      let questionResult;
       let submittedAnswer = $(this).html();
       if (submittedAnswer === correctAnswer) {
         $(this).removeClass("btn-primary").addClass("btn-success");
         $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
+        questionResult = "correct";
       } else if (submittedAnswer !== correctAnswer) {
         $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
         $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
+        questionResult = "incorrect";
       }
+      addScore(questionResult);
       questionIndex += 1;
       setTimeout(() => {
         displayNextQuestion(questionsArray, questionIndex)
@@ -142,6 +157,23 @@ function shuffle(a) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+/*
+Function to modify the scoreboard
+*/
+
+function addScore(questionResult) {
+  if (questionResult === "correct") {
+    let correctScore = parseInt($(".score-area-correct").html(), 10);
+    correctScore += 1;
+    $(".score-area-correct").html(correctScore);
+    $(".score-area-points").html(correctScore * 500);
+  } else if (questionResult === "incorrect") {
+    let incorrectScore = parseInt($(".score-area-incorrect").html(), 10);
+    incorrectScore += 1;
+    $(".score-area-incorrect").html(incorrectScore);
+  }
 }
 
 /*
