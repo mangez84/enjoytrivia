@@ -16,8 +16,7 @@ async function getOpenTriviaData(optionsURI) {
 }
 
 /* 
-Get trivia categories when clicking on "Choose Category".
-Use the jQuery .one() method to only call the API on the first click. 
+Get trivia categories when clicking on "Choose Category". 
 A large part of the code below was copied from https://www.javascripttutorial.net/javascript-fetch-api/ and later modified.
 */
 
@@ -29,7 +28,6 @@ async function displayOpenTriviaCategories() {
     let categoriesHTMLOption = `<option value="${category.id}">${category.name}</option>`;
     categoriesHTML += categoriesHTMLOption;
   });
-
   $("#form-category").html(categoriesHTML);
 }
 
@@ -97,6 +95,7 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $(".game-area").append(scoresHTML);
   $(".game-area").append('<div class="question-area w-100"></div>');
   $(".game-area").append('<div class="answer-area w-100"></div>');
+  $(".game-area").append('<div class="end-game-area w-100"><a href="index.html" class="btn btn-danger">End Game</a></div>');
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI);
   let questionsArray = questionsRecieved.results;
@@ -105,7 +104,7 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
 }
 
 /*
-Display the next question when an answer is submitted
+Display the next question when an answer is submitted.
 */
 
 function displayNextQuestion(questionsArray, questionIndex) {
@@ -160,7 +159,7 @@ function shuffle(a) {
 }
 
 /*
-Function to modify the scoreboard
+Function to display the current score.
 */
 
 function addScore(questionResult) {
