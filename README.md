@@ -98,5 +98,4 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 - Code to obtain API data using the fetch() method was copied from this [JavaScript Tutorial](https://www.javascripttutorial.net/javascript-fetch-api/) post. This post also has good descriptions on how to handle asynchronous HTTP requests reliably.
 - This [Stack Overflow](https://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery/1443005#1443005) post had a good tip about the .serialize() function in jQuery. Code was copied into the project and then modified.
-- Code to add a delay using promises was copied from this [Stack Overflow](https://stackoverflow.com/questions/45498873/add-a-delay-after-executing-each-iteration-with-foreach-loop/45500721#45500721) post.
 - The function to shuffle an array was copied in its entirety from this [Stack Overflow](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381) post.

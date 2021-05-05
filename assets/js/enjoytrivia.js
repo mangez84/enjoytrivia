@@ -78,8 +78,6 @@ $("#form-main").submit(function (event) {
 /*
 Function for managing the game and displaying questions.
 Remove the offcanvas backdrop effect from the body when starting the game.
-The code for adding a delay using promises was copied from
-https://stackoverflow.com/questions/45498873/add-a-delay-after-executing-each-iteration-with-foreach-loop/45500721#45500721
 */
 
 async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
@@ -88,7 +86,8 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $(".game-area").addClass("d-flex flex-wrap justify-content-center align-content-between");
   $(".game-area").append('<div class="question-area w-100"></div>');
   $(".game-area").append('<div class="answer-area w-100"></div>');
-
+  $(".question-area").html("");
+  $(".answer-area").html("");
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI);
   let questionsArray = questionsRecieved.results;
@@ -97,63 +96,40 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
 }
 
 /*
-Display next question
+Display next question when an answer is submitted
 */
 
 function displayNextQuestion(questionsArray, questionIndex) {
-  $(".question-area").html("");
-  $(".answer-area").html("");
-  let questionsHTML;
-  let answersHTML;
-  let answersArray;
-  let submittedAnswer;
-  let correctAnswer;
-  let questionResult;
-  let question;
-  question = questionsArray[questionIndex];
-  correctAnswer = question.correct_answer;
-  answersArray = question.incorrect_answers;
-  answersArray.push(correctAnswer);
-  if (question.type === "multiple") {
+  if (questionIndex < questionsArray.length) {
+    let questionCurrent = questionsArray[questionIndex];
+    let correctAnswer = questionCurrent.correct_answer;
+    let questionsHTML = `<p class="text-center">${questionCurrent.question}</p>`
+    let answersArray = questionCurrent.incorrect_answers;
+    answersArray.push(correctAnswer);
     answersArray = shuffle(answersArray);
-  }
-  questionsHTML = `<p class="text-center">${question.question}</p>`
-  answersHTML = answersArray.map(function (answer) {
-    return `<button class="btn btn-primary text-center">${answer}</button>`
-  })
-  $(".question-area").html(questionsHTML);
-  $(".answer-area").html(answersHTML);
-  $(".answer-area > button").click(function () {
-    submittedAnswer = $(this).html();
-    questionResult = checkAnswer(submittedAnswer, correctAnswer);
-    if (questionResult === "correct") {
-      $(this).removeClass("btn-primary").addClass("btn-success");
-      $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
-    } else if (questionResult === "incorrect") {
-      $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
-      $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
-    }
-    questionIndex += 1;
-    setTimeout(() => {
-      displayNextQuestion(questionsArray, questionIndex)
-    }, 2000);
-  });
-}
-
-/*
-Check the answer
-*/
-
-function checkAnswer(submittedAnswer, correctAnswer) {
-  let questionResult;
-  if (submittedAnswer === correctAnswer) {
-    questionResult = "correct";
+    let answersHTML = answersArray.map(function (answer) {
+      return `<button class="btn btn-primary text-center">${answer}</button>`
+    });
+    $(".question-area").html(questionsHTML);
+    $(".answer-area").html(answersHTML);
+    $(".answer-area > button").click(function () {
+      let submittedAnswer = $(this).html();
+      if (submittedAnswer === correctAnswer) {
+        $(this).removeClass("btn-primary").addClass("btn-success");
+        $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
+      } else if (submittedAnswer !== correctAnswer) {
+        $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+        $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
+      }
+      questionIndex += 1;
+      setTimeout(() => {
+        displayNextQuestion(questionsArray, questionIndex)
+      }, 2000);
+    });
   } else {
-    questionResult = "incorrect";
+    alert("game finished");
   }
-  return questionResult;
 }
-
 
 /*
 The function below was copied in its entirety from
