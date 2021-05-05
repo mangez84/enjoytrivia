@@ -122,27 +122,31 @@ function displayNextQuestion(questionsArray, questionIndex) {
     });
     $(".question-area").html(questionsHTML);
     $(".answer-area").html(answersHTML);
-    $(".answer-area > button").click(function () {
-      let questionResult;
-      let submittedAnswer = $(this).html();
-      if (submittedAnswer === correctAnswer) {
-        $(this).removeClass("btn-primary").addClass("btn-success");
-        $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
-        questionResult = "correct";
-      } else if (submittedAnswer !== correctAnswer) {
-        $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
-        $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
-        questionResult = "incorrect";
-      }
-      addScore(questionResult);
-      questionIndex += 1;
-      setTimeout(() => {
-        displayNextQuestion(questionsArray, questionIndex)
-      }, 2000);
-    });
+    waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer);
   } else {
     alert("game finished");
   }
+}
+
+function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer) {
+  $(".answer-area > button").click(function () {
+    let questionResult;
+    let submittedAnswer = $(this).html();
+    if (submittedAnswer === correctAnswer) {
+      $(this).removeClass("btn-primary").addClass("btn-success");
+      $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
+      questionResult = "correct";
+    } else if (submittedAnswer !== correctAnswer) {
+      $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+      $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
+      questionResult = "incorrect";
+    }
+    addScore(questionResult);
+    questionIndex += 1;
+    setTimeout(() => {
+      displayNextQuestion(questionsArray, questionIndex)
+    }, 2000);
+  });
 }
 
 /*
