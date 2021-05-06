@@ -83,7 +83,7 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $(".game-area").html("");
   $(".game-area").addClass("d-flex flex-wrap justify-content-center align-content-between");
   let scoresHTML = `
-    <div class="score-area w-100">
+    <div class="score-area w-100 d-flex flex-wrap justify-content-evenly">
       <h2>Score:</h2>
       <h3>Correct:</h3>
       <p class="score-area-correct">0</p>
@@ -93,9 +93,9 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
       <p class="score-area-points">0</p>
     </div>`;
   $(".game-area").append(scoresHTML);
-  $(".game-area").append('<div class="question-area w-100"></div>');
-  $(".game-area").append('<div class="answer-area w-100"></div>');
-  $(".game-area").append('<div class="end-game-area w-100"><a href="index.html" class="btn btn-danger">End Game</a></div>');
+  $(".game-area").append('<div class="question-area w-100 d-flex flex-wrap"></div>');
+  $(".game-area").append('<div class="answer-area w-100 d-flex flex-wrap justify-content-evenly"></div>');
+  $(".game-area").append('<div class="end-game-area w-100 d-flex flex-wrap justify-content-center"><a href="index.html" class="btn btn-danger">End Game</a></div>');
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI);
   let questionsArray = questionsRecieved.results;
@@ -112,13 +112,13 @@ function displayNextQuestion(questionsArray, questionIndex) {
     let questionCurrent = questionsArray[questionIndex];
     let correctAnswer = questionCurrent.correct_answer;
     let questionsHTML = `
-      <h2 class="text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
-      <p class="text-center">${questionCurrent.question}</p>`;
+      <h2 class="w-100 text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
+      <p class="w-100 text-center">${questionCurrent.question}</p>`;
     let answersArray = questionCurrent.incorrect_answers;
     answersArray.push(correctAnswer);
     answersArray = shuffle(answersArray);
     let answersHTML = answersArray.map(function (answer) {
-      return `<button class="btn btn-primary text-center">${answer}</button>`;
+      return `<button class="btn btn-primary">${answer}</button>`;
     });
     $(".question-area").html(questionsHTML);
     $(".answer-area").html(answersHTML);
