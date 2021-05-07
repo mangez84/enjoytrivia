@@ -129,7 +129,7 @@ function displayNextQuestion(questionsArray, questionIndex) {
 }
 
 function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer) {
-  $(".answer-area > button").click(function () {
+  $(".answer-area > button").one("click", function () {
     let questionResult;
     let submittedAnswer = $(this).html();
     if (submittedAnswer === correctAnswer) {
