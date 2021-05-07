@@ -1,0 +1,10 @@
+/* Game area */
+
+/** Score area **/
+
+/*** Make the heading and paragraph display side by side ***/
+
+.score-area h3,
+.score-area p {
+  display: inline-block;
+}

@@ -80,27 +80,77 @@ Remove the offcanvas backdrop effect from the body when starting the game.
 
 async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $("body").removeAttr("class data-bs-padding-right style");
+  $(".instruction-area").html("");
+  $(".feedback-area").html("");
   $(".game-area").html("");
   $(".game-area").addClass("flex-grow-1 d-flex flex-wrap align-content-between");
-  let scoresHTML = `
-    <div class="score-area w-100 d-flex flex-wrap justify-content-evenly">
-      <h2>Score:</h2>
-      <h3>Correct:</h3>
-      <p class="score-area-correct">0</p>
-      <h3>Incorrect:</h3>
-      <p class="score-area-incorrect">0</p>
-      <h3>Points:</h3>
-      <p class="score-area-points">0</p>
-    </div>`;
-  $(".game-area").append(scoresHTML);
-  $(".game-area").append('<div class="question-area w-100 d-flex flex-wrap"></div>');
-  $(".game-area").append('<div class="answer-area w-100 d-flex flex-wrap justify-content-evenly"></div>');
-  $(".game-area").append('<div class="end-game-area w-100 d-flex flex-wrap justify-content-center"><a href="index.html" class="btn btn-danger">End Game</a></div>');
+  let gameHTML = fetchGameHTML(timeInterval);
+  $(".game-area").append(gameHTML);
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI);
   let questionsArray = questionsRecieved.results;
   let questionIndex = 0;
   displayNextQuestion(questionsArray, questionIndex);
+}
+
+function fetchGameHTML(timeInterval) {
+  let gameHTML;
+  if ($("#form-time-switch").prop("checked")) {
+    console.log(timeInterval);
+  } else {
+    gameHTML = `
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center">Score:</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex justify-content-evenly">
+            <div class="score-area">
+              <h3>Correct:</h3>
+              <p class="score-area-correct">0</p>
+            </div>
+            <div class="score-area">
+              <h3>Incorrect:</h3>
+              <p class="score-area-incorrect">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex justify-content-evenly">
+            <div class="score-area">
+              <h3>Points:</h3>
+              <p class="score-area-points">0</p>
+            </div>
+            <div class="score-area">
+              <h3>Time Left:</h3>
+              <p class="score-area-time">0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 question-area">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 answer-area">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 end-game-area">
+            <a href="index.html" class="btn btn-danger">End Game</a>
+          </div>
+        </div>
+      </div>`;
+  }
+  return gameHTML;
 }
 
 /*
@@ -112,8 +162,8 @@ function displayNextQuestion(questionsArray, questionIndex) {
     let questionCurrent = questionsArray[questionIndex];
     let correctAnswer = questionCurrent.correct_answer;
     let questionsHTML = `
-      <h2 class="w-100 text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
-      <p class="w-100 text-center">${questionCurrent.question}</p>`;
+      <h2 class="text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
+      <p class="text-center">${questionCurrent.question}</p>`;
     let answersArray = questionCurrent.incorrect_answers;
     answersArray.push(correctAnswer);
     answersArray = shuffle(answersArray);
