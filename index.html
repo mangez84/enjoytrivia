@@ -12,11 +12,29 @@
 
 <body>
   <!-- Main container for positioning elements with Bootstrap v5.0 flex utilities. https://getbootstrap.com/docs/5.0/utilities/flex/ -->
-  <div class="min-vh-100 d-flex flex-wrap justify-content-center align-content-between">
-    <header class="game-header w-100 d-flex flex-wrap justify-content-center">
+  <div class="min-vh-100 d-flex flex-wrap flex-column justify-content-between align-items-center">
+    <header class="game-header my-3">
       <h1>Enjoy Trivia!</h1>
     </header>
-    <section class="game-area w-100 d-flex flex-wrap justify-content-center align-content-between">
+    <section class="instruction-area">
+      <!-- 
+      This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
+      for the "Instructions" section.
+      -->
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasInstructions"
+        aria-controls="offcanvasInstructions">Instructions</button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasInstructions"
+        aria-labelledby="offcanvasInstructionsLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasInstructionsLabel">Intructions</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <p>Instructions</p>
+        </div>
+      </div>
+    </section>
+    <section class="game-area">
       <!-- 
       This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
       for the "Create Game" section.
@@ -91,7 +109,25 @@
         </div>
       </div>
     </section>
-    <footer class="game-copyright w-100 d-flex flex-wrap justify-content-center">
+    <section class="feedback-area">
+      <!-- 
+      This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
+      for the "Instructions" section.
+      -->
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFeedback"
+        aria-controls="offcanvasFeedback">Give Feedback</button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFeedback"
+        aria-labelledby="offcanvasFeedbackLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasFeedbackLabel">Give Feedback</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <p>Give Feedback</p>
+        </div>
+      </div>
+    </section>
+    <footer class="game-copyright my-3">
       <p>Copyright Information</p>
     </footer>
   </div>
