@@ -80,9 +80,9 @@ Remove the offcanvas backdrop effect from the body when starting the game.
 
 async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   $("body").removeAttr("class data-bs-padding-right style");
-  $(".instruction-area").html("");
-  $(".feedback-area").html("");
-  $(".game-area").html("");
+  $(".instruction-area").remove();
+  $(".feedback-area").remove();
+  $(".game-area").empty();
   $(".game-area").addClass("flex-grow-1 d-flex flex-wrap align-content-between");
   let gameHTML = fetchGameHTML(timeInterval);
   $(".game-area").append(gameHTML);
@@ -106,24 +106,22 @@ function fetchGameHTML(timeInterval) {
           </div>
         </div>
         <div class="row">
-          <div class="col-12 d-flex justify-content-evenly">
-            <div class="score-area">
+          <div class="score-area col-lg-6 d-flex justify-content-around">
+            <div>
               <h3>Correct:</h3>
               <p class="score-area-correct">0</p>
             </div>
-            <div class="score-area">
+            <div>
               <h3>Incorrect:</h3>
               <p class="score-area-incorrect">0</p>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 d-flex justify-content-evenly">
-            <div class="score-area">
+          <div class="score-area col-lg-6 d-flex justify-content-around">
+            <div>
               <h3>Points:</h3>
               <p class="score-area-points">0</p>
             </div>
-            <div class="score-area">
+            <div>
               <h3>Time Left:</h3>
               <p class="score-area-time">0</p>
             </div>
@@ -132,19 +130,19 @@ function fetchGameHTML(timeInterval) {
       </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 question-area">
+          <div class="question-area col-12">
           </div>
         </div>
       </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 answer-area">
+          <div class="answer-area col-12">
           </div>
         </div>
       </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 end-game-area">
+          <div class="end-game-area col-12 d-flex justify-content-center">
             <a href="index.html" class="btn btn-danger">End Game</a>
           </div>
         </div>
