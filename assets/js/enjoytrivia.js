@@ -136,7 +136,7 @@ function fetchGameHTML(timeInterval) {
       </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="answer-area col-12">
+          <div class="answer-area col-12 d-flex flex-wrap justify-content-center">
           </div>
         </div>
       </div>
@@ -166,7 +166,8 @@ function displayNextQuestion(questionsArray, questionIndex) {
     answersArray.push(correctAnswer);
     answersArray = shuffle(answersArray);
     let answersHTML = answersArray.map(function (answer) {
-      return `<button class="btn btn-primary">${answer}</button>`;
+      return `
+        <button class="btn btn-primary m-1">${answer}</button>`;
     });
     $(".question-area").html(questionsHTML);
     $(".answer-area").html(answersHTML);
