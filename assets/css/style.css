@@ -1,3 +1,26 @@
+/* General settings */
+
+/** Headings and paragraphs **/
+
+h1,
+h2,
+h3,
+p {
+  color: #a5c3ef;
+}
+
+/* Main container */
+
+.main-container {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)),
+    url(../images/board-776688_1280.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* Game area */
 
 /** Score area **/
