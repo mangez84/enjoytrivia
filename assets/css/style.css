@@ -31,3 +31,9 @@ p {
 .score-area p {
   display: inline-block;
 }
+
+/** Answer area **/
+
+.btn-container {
+  min-width: 50%;
+}

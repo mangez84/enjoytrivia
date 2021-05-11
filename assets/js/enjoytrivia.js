@@ -93,6 +93,10 @@ async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
   displayNextQuestion(questionsArray, questionIndex);
 }
 
+/*
+Function to generate the HTML for the game area.
+*/
+
 function fetchGameHTML(timeInterval) {
   let gameHTML;
   if ($("#form-time-switch").prop("checked")) {
@@ -135,8 +139,10 @@ function fetchGameHTML(timeInterval) {
         </div>
       </div>
       <div class="container-fluid">
-        <div class="row">
-          <div class="answer-area col-12 d-flex flex-wrap justify-content-center">
+        <div class="row g-0">
+          <div class="answer-area-one col-md-4 offset-md-4 d-flex">
+          </div>
+          <div class="answer-area-two col-md-4 offset-md-4 d-flex">
           </div>
         </div>
       </div>
@@ -167,32 +173,47 @@ function displayNextQuestion(questionsArray, questionIndex) {
     answersArray = shuffle(answersArray);
     let answersHTML = answersArray.map(function (answer) {
       return `
-        <button class="btn btn-primary m-1">${answer}</button>`;
+        <div class="btn-container d-flex">
+          <button class="answer-button btn btn-primary flex-fill m-1">${answer}</button>
+        </div>`;
     });
+    if (questionCurrent.type === "multiple") {
+      let answerAreaOne = answersHTML.slice(0, 2);
+      let answerAreaTwo = answersHTML.slice(2, 4);
+      $(".answer-area-one").html(answerAreaOne);
+      $(".answer-area-two").html(answerAreaTwo);
+    } else {
+      $(".answer-area-one").html(answersHTML);
+    }
     $(".question-area").html(questionsHTML);
-    $(".answer-area").html(answersHTML);
     waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer);
   } else {
     alert("game finished");
   }
 }
 
+/*
+Function to check if the submitted answer is correct and in that case highlight the button green. 
+*/
+
 function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer) {
-  $(".answer-area > button").one("click", function () {
+  $(".answer-button").one("click", function () {
     let questionResult;
     let submittedAnswer = $(this).html();
     if (submittedAnswer === correctAnswer) {
       $(this).removeClass("btn-primary").addClass("btn-success");
-      $(this).siblings().removeClass("btn-primary").addClass("btn-danger");
+      $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
       questionResult = "correct";
-    } else if (submittedAnswer !== correctAnswer) {
-      $(".answer-area > button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
-      $(".answer-area > button:contains(" + correctAnswer + ")").siblings().removeClass("btn-primary").addClass("btn-danger");
+    } else {
+      $(".answer-button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+      $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
       questionResult = "incorrect";
     }
     addScore(questionResult);
     questionIndex += 1;
     setTimeout(() => {
+      $(".answer-area-one").empty();
+      $(".answer-area-two").empty();
       displayNextQuestion(questionsArray, questionIndex)
     }, 2000);
   });
