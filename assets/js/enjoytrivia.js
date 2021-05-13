@@ -185,12 +185,7 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
       $(".answer-area-one").html(answersHTML);
     }
     $(".question-area").html(questionsHTML);
-    if (timeSwitch) {
-      console.log("Time-based mode");
-      waitForAndCheckAnswerTime(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval);
-    } else {
-      waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer);
-    }
+    waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval);
   } else {
     alert("game finished");
   }
@@ -200,47 +195,25 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
 Function to check if the submitted answer is correct and in that case highlight the button green. 
 */
 
-function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer) {
+function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval) {
+  let timeLimitCounter;
+  if (timeSwitch) {
+    let timeLimit = timeInterval;
+    $("p.score-area-time").html(timeLimit);
+    timeLimitCounter = setInterval(() => {
+      $("p.score-area-time").html(--timeLimit);
+      if (timeLimit === 0) {
+        // Trigger a click on a button that does not contain the correct answer if the time limit expires.
+        $(".answer-button").not(".answer-button:contains(" + correctAnswer + ")").first().trigger("click");
+        // Unbind the buttons to prevent unexpected behaviour when clicking the buttons multiple times after timeout.
+        $(".answer-button").unbind("click");
+      }
+    }, 1000);
+  }
   $(".answer-button").one("click", function () {
-    let questionResult;
-    let submittedAnswer = $(this).html();
-    if (submittedAnswer === correctAnswer) {
-      $(this).removeClass("btn-primary").addClass("btn-success");
-      $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
-      questionResult = "correct";
-    } else {
-      $(".answer-button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
-      $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
-      questionResult = "incorrect";
+    if (timeSwitch) {
+      clearInterval(timeLimitCounter);
     }
-    addScore(questionResult);
-    questionIndex += 1;
-    setTimeout(() => {
-      $(".answer-area-one").empty();
-      $(".answer-area-two").empty();
-      displayNextQuestion(questionsArray, questionIndex);
-    }, 2000);
-  });
-}
-
-/*
-Function to set the time limit before an answer must be submitted. 
-*/
-
-function waitForAndCheckAnswerTime(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval) {
-  let timeLimit = timeInterval;
-  $("p.score-area-time").html(timeLimit);
-  let timeLimitCounter = setInterval(() => {
-    $("p.score-area-time").html(--timeLimit);
-    if (timeLimit === 0) {
-      // Trigger a click on a button that does not contain the correct answer if the time limit expires.
-      $(".answer-button").not(".answer-button:contains(" + correctAnswer + ")").first().trigger("click");
-      // Unbind the buttons to prevent unexpected behaviour when clicking the buttons multiple times after timeout.
-      $(".answer-button").unbind("click");
-    }
-  }, 1000);
-  $(".answer-button").one("click", function () {
-    clearInterval(timeLimitCounter);
     let questionResult;
     let submittedAnswer = $(this).html();
     if (submittedAnswer === correctAnswer) {
