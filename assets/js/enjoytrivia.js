@@ -163,7 +163,11 @@ Display the next question when an answer is submitted.
 function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInterval) {
   if (questionIndex < questionsArray.length) {
     let questionCurrent = questionsArray[questionIndex];
-    let correctAnswer = questionCurrent.correct_answer;
+    /*
+    Use a function to decode possible HTML entities for the correctAnswer variable. 
+    The variables presented in the DOM are decoded automatically.
+    */
+    let correctAnswer = decodeHTML(questionCurrent.correct_answer);
     let questionsHTML = `
       <h2 class="text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
       <p class="text-center">${questionCurrent.question}</p>`;
@@ -229,19 +233,6 @@ function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, tim
 }
 
 /*
-The function below was copied in its entirety from
-https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
-*/
-
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-/*
 Function to display the current score.
 */
 
@@ -256,6 +247,32 @@ function addScore(questionResult) {
     incorrectScore += 1;
     $(".score-area-incorrect").html(incorrectScore);
   }
+}
+
+/*
+The function below was copied in its entirety from
+https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
+*/
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/*
+The function below was copied from  
+https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787#7394787
+and later modified. The correctAnswer variable is not present in the DOM and therefore the HTML entities does not get decoded. 
+This function takes care of that.
+*/
+
+function decodeHTML(stringHTML) {
+  let txt = document.createElement("textarea");
+  txt.innerHTML = stringHTML;
+  return txt.value;
 }
 
 /*

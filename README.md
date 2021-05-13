@@ -20,7 +20,11 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 3. [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
     - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
-4. [Credits](#credits)
+4. [Test](#test)
+    - [Known Bugs](TEST.md#known-bugs)
+        - [Solved](TEST.md#solved)
+        - [Unsolved](TEST.md#unsolved)
+5. [Credits](#credits)
     - [Code](#code)
     - [Content](#content)
     - [Media](#media)
@@ -95,6 +99,10 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
     - The project uses the grid system, flex utilities, the offcanvas component and forms from the Bootstrap 5.0 framework.
 
+## Test
+
+See separate file [TEST.md](TEST.md#test) for information on completed tests and results from these.
+
 ## Credits
 
 ### Code
@@ -103,6 +111,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - This [Stack Overflow](https://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery/1443005#1443005) post had a good tip about the .serialize() function in jQuery. Code was copied into the project and then modified.
 - The function to shuffle an array was copied in its entirety from this [Stack Overflow](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381) post.
 - The code for darkening the background image came from this [CSS-Tricks](https://css-tricks.com/design-considerations-text-images/) post.
+- The function for decoding HTML entities was copied from this [Stack Overflow](https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787#7394787) post.
 
 ### Content
 
