@@ -214,17 +214,10 @@ function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, tim
     if (timeSwitch) {
       clearInterval(timeLimitCounter);
     }
-    let questionResult;
     let submittedAnswer = $(this).html();
-    if (submittedAnswer === correctAnswer) {
-      $(this).removeClass("btn-primary").addClass("btn-success");
-      $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
-      questionResult = "correct";
-    } else {
-      $(".answer-button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
-      $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
-      questionResult = "incorrect";
-    }
+    let questionResult = submittedAnswer === correctAnswer ? "correct" : "incorrect";
+    $(".answer-button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+    $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
     addScore(questionResult);
     questionIndex += 1;
     setTimeout(() => {
