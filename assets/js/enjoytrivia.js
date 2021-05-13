@@ -69,8 +69,9 @@ The code below was copied from https://stackoverflow.com/questions/169506/obtain
 $("#form-main").submit(function (event) {
   event.preventDefault();
   let optionsURI = $(this).serialize();
+  let timeSwitch = $("#form-time-switch").prop("checked");
   let timeInterval = $("#form-time-duration").val();
-  displayOpenTriviaQuestions(optionsURI, timeInterval);
+  displayOpenTriviaQuestions(optionsURI, timeSwitch, timeInterval);
 });
 
 /*
@@ -78,82 +79,80 @@ Function for managing the game and displaying questions.
 Remove the offcanvas backdrop effect from the body when starting the game.
 */
 
-async function displayOpenTriviaQuestions(optionsURI, timeInterval) {
+async function displayOpenTriviaQuestions(optionsURI, timeSwitch, timeInterval) {
   $("body").removeAttr("class data-bs-padding-right style");
   $(".instruction-area").remove();
   $(".feedback-area").remove();
   $(".game-area").empty();
   $(".game-area").addClass("flex-grow-1 d-flex flex-wrap align-content-between");
-  let gameHTML = fetchGameHTML(timeInterval);
-  $(".game-area").append(gameHTML);
+  $(".game-area").append(fetchGameHTML());
+  if (timeSwitch) {
+    $(".score-area-time").removeClass("text-decoration-line-through");
+    $("p.score-area-time").html(timeInterval);
+  }
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI);
   let questionsArray = questionsRecieved.results;
   let questionIndex = 0;
-  displayNextQuestion(questionsArray, questionIndex);
+  displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInterval);
 }
 
 /*
 Function to generate the HTML for the game area.
 */
 
-function fetchGameHTML(timeInterval) {
-  let gameHTML;
-  if ($("#form-time-switch").prop("checked")) {
-    console.log(timeInterval);
-  } else {
-    gameHTML = `
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center">Score:</h2>
+function fetchGameHTML() {
+  let gameHTML = `
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center">Score:</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="score-area col-lg-6 d-flex justify-content-around">
+          <div>
+            <h3>Correct:</h3>
+            <p class="score-area-correct">0</p>
+          </div>
+          <div>
+            <h3>Incorrect:</h3>
+            <p class="score-area-incorrect">0</p>
           </div>
         </div>
-        <div class="row">
-          <div class="score-area col-lg-6 d-flex justify-content-around">
-            <div>
-              <h3>Correct:</h3>
-              <p class="score-area-correct">0</p>
-            </div>
-            <div>
-              <h3>Incorrect:</h3>
-              <p class="score-area-incorrect">0</p>
-            </div>
+        <div class="score-area col-lg-6 d-flex justify-content-around">
+          <div>
+            <h3>Points:</h3>
+            <p class="score-area-points">0</p>
           </div>
-          <div class="score-area col-lg-6 d-flex justify-content-around">
-            <div>
-              <h3>Points:</h3>
-              <p class="score-area-points">0</p>
-            </div>
-            <div>
-              <h3>Time Left:</h3>
-              <p class="score-area-time">0</p>
-            </div>
+          <div>
+            <h3 class="score-area-time text-decoration-line-through">Time Left:</h3>
+            <p class="score-area-time text-decoration-line-through">0</p>
           </div>
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="question-area col-12">
-          </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="question-area col-12">
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="row g-0">
-          <div class="answer-area-one col-md-4 offset-md-4 d-flex">
-          </div>
-          <div class="answer-area-two col-md-4 offset-md-4 d-flex">
-          </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row g-0">
+        <div class="answer-area-one col-md-4 offset-md-4 d-flex">
+        </div>
+        <div class="answer-area-two col-md-4 offset-md-4 d-flex">
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="end-game-area col-12 d-flex justify-content-center">
-            <a href="index.html" class="btn btn-danger">End Game</a>
-          </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="end-game-area col-12 d-flex justify-content-center">
+          <a href="index.html" class="btn btn-danger">End Game</a>
         </div>
-      </div>`;
-  }
+      </div>
+    </div>`;
   return gameHTML;
 }
 
@@ -161,7 +160,7 @@ function fetchGameHTML(timeInterval) {
 Display the next question when an answer is submitted.
 */
 
-function displayNextQuestion(questionsArray, questionIndex) {
+function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInterval) {
   if (questionIndex < questionsArray.length) {
     let questionCurrent = questionsArray[questionIndex];
     let correctAnswer = questionCurrent.correct_answer;
@@ -186,7 +185,12 @@ function displayNextQuestion(questionsArray, questionIndex) {
       $(".answer-area-one").html(answersHTML);
     }
     $(".question-area").html(questionsHTML);
-    waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer);
+    if (timeSwitch) {
+      console.log("Time-based mode")
+      waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval);
+    } else {
+      waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer);
+    }
   } else {
     alert("game finished");
   }
@@ -196,7 +200,10 @@ function displayNextQuestion(questionsArray, questionIndex) {
 Function to check if the submitted answer is correct and in that case highlight the button green. 
 */
 
-function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer) {
+function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval) {
+  if (timeSwitch) {
+    console.log(timeInterval);
+  }
   $(".answer-button").one("click", function () {
     let questionResult;
     let submittedAnswer = $(this).html();
