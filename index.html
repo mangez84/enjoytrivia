@@ -35,7 +35,7 @@
         </div>
         <div class="offcanvas-body">
           <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
-          <form id="form-main">
+          <form id="form-game">
             <!-- Get the categories from the OpenTriviaDB API with JavaScript. -->
             <div class="mb-3">
               <label for="form-category" class="form-label">Category</label>
@@ -107,7 +107,27 @@
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <p>Give Feedback</p>
+          <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
+          <form id="form-feedback">
+            <div class="mb-3">
+              <label for="feedback-name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="feedback-name" name="feedback-name"
+                placeholder="Trivia Masterson" required>
+            </div>
+            <div class="mb-3">
+              <label for="feedback-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="feedback-email" name="feedback-email"
+                placeholder="trivia.masterson@exampletrivia.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="feedback-textarea" class="form-label">Feedback</label>
+              <textarea class="form-control" id="feedback-textarea" name="feedback-textarea" rows="6"
+                required></textarea>
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary" id="form-send-feedback">Send Feedback</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

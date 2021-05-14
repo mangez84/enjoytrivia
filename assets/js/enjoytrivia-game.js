@@ -67,7 +67,7 @@ Gather the values from the form and create the URI for the API call.
 The code below was copied from https://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery/1443005#1443005 and later modified.
 */
 
-$("#form-main").submit(function (event) {
+$("#form-game").submit(function (event) {
   event.preventDefault();
   let optionsURI = $(this).serialize();
   let timeSwitch = $("#form-time-switch").prop("checked");
