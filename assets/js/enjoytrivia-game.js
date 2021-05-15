@@ -32,7 +32,7 @@ async function getOpenTriviaData(optionsURI, optionsObject) {
       }
       optionsObject.type = "";
       let questionsURI = "api.php?category=" + optionsObject.category + "&difficulty=" + optionsObject.difficulty + "&type=" + optionsObject.type + "&amount=" + optionsObject.amount;
-      let alertMessage = "There is not enough questions in the database for your selected options. The game will start with the selected category and the maximum number of questions available. Questions of both types will be displayed."
+      let alertMessage = "There are not enough questions in the database for your selected options. The game will start with the selected category and the maximum number of questions available. Questions of both types will be displayed."
       alert(alertMessage);
       return await getOpenTriviaData(questionsURI);
     } else if (response.status === 200 && responseJSON.trivia_categories) {
