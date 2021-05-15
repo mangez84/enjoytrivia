@@ -21,6 +21,12 @@ p {
   background-repeat: no-repeat;
 }
 
+/* Instruction area */
+
+.instruction-area h2 {
+  display: block;
+}
+
 /* Game area */
 
 /** Score area **/

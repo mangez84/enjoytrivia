@@ -13,6 +13,7 @@ function sendFeedback() {
     .then(function (response) {
       console.log('SUCCESS!', response.status, response.text);
     }, function (error) {
-      console.log('FAILED...', error);
+      let errorMessage = "Failed to send feedback. Thanks for the effort but please try again later."
+      alert(error.name + ": " + errorMessage);
     });
 }
