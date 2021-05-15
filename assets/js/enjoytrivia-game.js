@@ -4,12 +4,40 @@ Main function to obtain data from the API.
 Call this function to build a complete URL and to obtain data.  
 */
 
-async function getOpenTriviaData(optionsURI) {
+async function getOpenTriviaData(optionsURI, optionsObject) {
   let baseURL = "https://opentdb.com/";
   let completeURL = baseURL + optionsURI;
   try {
     let response = await fetch(completeURL);
-    return await response.json();
+    let responseJSON = await response.json();
+    if (response.status === 200 && responseJSON.response_code === 0) {
+      return responseJSON;
+    }
+    /*
+    Code to handle cases where there are not enough questions with the selected category and difficulty.
+    There is no way to check the number of questions per type via the API.
+    The game will start with the maximum number of questions for the selected difficulty and displays questions of both types.  
+    */
+    else if (response.status === 200 && responseJSON.response_code === 1) {
+      response = await fetch(baseURL + "api_count.php?category=" + optionsObject.category);
+      responseJSON = await response.json();
+      if (optionsObject.difficulty === "easy") {
+        optionsObject.amount = responseJSON.category_question_count.total_easy_question_count;
+      } else if (optionsObject.difficulty === "medium") {
+        optionsObject.amount = responseJSON.category_question_count.total_medium_question_count;
+      } else if (optionsObject.difficulty === "hard") {
+        optionsObject.amount = responseJSON.category_question_count.total_hard_question_count;
+      } else {
+        optionsObject.amount = responseJSON.category_question_count.total_question_count;
+      }
+      optionsObject.type = "";
+      let questionsURI = "api.php?category=" + optionsObject.category + "&difficulty=" + optionsObject.difficulty + "&type=" + optionsObject.type + "&amount=" + optionsObject.amount;
+      let alertMessage = "There is not enough questions in the database for your selected options. The game will start with the selected category and the maximum number of questions available. Questions of both types will be displayed."
+      alert(alertMessage);
+      return await getOpenTriviaData(questionsURI);
+    } else if (response.status === 200 && responseJSON.trivia_categories) {
+      return responseJSON;
+    }
   } catch (error) {
     let errorMessage = "Failed to load data from the OpenTriviaDB API. Please reload page and try again.";
     alert(error.name + ": " + errorMessage);
@@ -69,10 +97,15 @@ The code below was copied from https://stackoverflow.com/questions/169506/obtain
 
 $("#form-game").submit(function (event) {
   event.preventDefault();
+  let optionsObject = {
+    category: $("#form-category").val(),
+    difficulty: $("#form-difficulty").val(),
+    type: $("#form-type").val(),
+  };
   let optionsURI = $(this).serialize();
   let timeSwitch = $("#form-time-switch").prop("checked");
   let timeInterval = $("#form-time-duration").val();
-  displayOpenTriviaQuestions(optionsURI, timeSwitch, timeInterval);
+  displayOpenTriviaQuestions(optionsURI, optionsObject, timeSwitch, timeInterval);
 });
 
 /*
@@ -80,7 +113,7 @@ Function for managing the game and displaying questions.
 Remove the offcanvas backdrop effect from the body when starting the game.
 */
 
-async function displayOpenTriviaQuestions(optionsURI, timeSwitch, timeInterval) {
+async function displayOpenTriviaQuestions(optionsURI, optionsObject, timeSwitch, timeInterval) {
   $("body").removeAttr("class data-bs-padding-right style");
   $(".instruction-area").remove();
   $(".feedback-area").remove();
@@ -91,7 +124,7 @@ async function displayOpenTriviaQuestions(optionsURI, timeSwitch, timeInterval) 
     $(".score-area-time").removeClass("text-decoration-line-through");
   }
   let questionsURI = "api.php?" + optionsURI;
-  let questionsRecieved = await getOpenTriviaData(questionsURI);
+  let questionsRecieved = await getOpenTriviaData(questionsURI, optionsObject);
   let questionsArray = questionsRecieved.results;
   let questionIndex = 0;
   displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInterval);
