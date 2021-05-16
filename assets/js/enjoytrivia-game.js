@@ -32,7 +32,7 @@ async function getOpenTriviaData(optionsURI, optionsObject) {
       }
       optionsObject.type = "";
       let questionsURI = "api.php?category=" + optionsObject.category + "&difficulty=" + optionsObject.difficulty + "&type=" + optionsObject.type + "&amount=" + optionsObject.amount;
-      let alertMessage = "There are not enough questions in the database for your selected options. The game will start with the maximum number of questions available for your selected category and difficulty. Questions of both types may be displayed."
+      let alertMessage = "There are not enough questions in the database for your selected options. The game will start with the maximum number of questions available for your selected category and difficulty. Questions of both types may be displayed.";
       alert(alertMessage);
       return await getOpenTriviaData(questionsURI);
     } else if (response.status === 200 && responseJSON.trivia_categories) {
@@ -224,7 +224,28 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
     $(".question-area").html(questionsHTML);
     waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, incorrectAnswer, timeSwitch, timeInterval);
   } else {
-    alert("game finished");
+    let numberQuestions = parseInt($(".score-area-correct").html(), 10) + parseInt($(".score-area-incorrect").html(), 10);
+    let maxPoints = numberQuestions * 500;
+    let playerPoints = parseInt($(".score-area-points").html(), 10);
+    let finishHTML;
+    if (playerPoints === 0) {
+      finishHTML = `
+      <h2 class="text-center">Wooops!</h2>
+      <p class="text-center">You did not answer any questions correctly! Better luck next time!</p>`;
+    } else if (playerPoints === maxPoints) {
+      finishHTML = `
+      <h2 class="text-center">Congratulations!</h2>
+      <p class="text-center">You finished the game with ${playerPoints} points! Since this is the maximum number of points for this round, you will get a balloon!</p>
+      <div class="d-flex justify-content-around">
+        <div class="balloon"></div>`;
+    } else {
+      finishHTML = `
+      <h2 class="text-center">Hurray!</h2>
+      <p class="text-center">You finished the game with ${playerPoints} points!</p>`;
+    }
+    $(".answer-area-one").remove();
+    $(".answer-area-two").remove();
+    $(".question-area").html(finishHTML);
   }
 }
 
