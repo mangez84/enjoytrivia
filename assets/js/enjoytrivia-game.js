@@ -44,7 +44,7 @@ async function getOpenTriviaData(optionsURI, optionsObject) {
   }
 }
 
-/* 
+/*
 Get trivia categories when clicking on "Choose Category". 
 A large part of the code below was copied from https://www.javascripttutorial.net/javascript-fetch-api/ and later modified.
 */

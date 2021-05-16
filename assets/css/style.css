@@ -1,20 +1,31 @@
 /* General settings */
 
+/** Fonts **/
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700&display=swap');
+
 /** Headings and paragraphs **/
 
 h1,
 h2,
-h3,
+h3 {
+  color: #a5c3ef;
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+}
+
 p {
   color: #a5c3ef;
+  font-family: 'Exo', sans-serif;
+  font-weight: 500;
 }
 
 /* Main container */
 
 .main-container {
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)),
+    linear-gradient(rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.8)),
     url(../images/board-776688_1280.jpg);
   background-position: center;
   background-size: cover;
