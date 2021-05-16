@@ -98,6 +98,8 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 - [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
     - The project uses the grid system, flex utilities, the offcanvas component and forms from the Bootstrap 5.0 framework.
+- [favicon.io](https://favicon.io/)
+    - The favicon used on the website was generated at [favicon.io](https://favicon.io/).
 
 ## Test
 
