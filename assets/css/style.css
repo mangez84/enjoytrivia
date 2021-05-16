@@ -20,6 +20,10 @@ p {
   font-weight: 500;
 }
 
+footer p {
+  font-weight: 700;
+}
+
 /** Buttons and anchors **/
 
 button.btn-primary {
@@ -79,6 +83,79 @@ a.end-game-anchor.btn-danger {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Offcanvas components */
+
+/** Create Game and Give Feedback **/
+
+.offcanvas-game.offcanvas,
+.offcanvas-feedback.offcanvas {
+  background-color: #151515;
+  color: #a5c3ef;
+  font-family: 'Exo', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.offcanvas-game.offcanvas select,
+.offcanvas-feedback.offcanvas input,
+.offcanvas-feedback.offcanvas textarea {
+  color: #a5c3ef;
+  background-color: #151515;
+  border: 2px solid #a5c3ef;
+}
+
+.offcanvas-game.offcanvas select:hover,
+.offcanvas-game.offcanvas select:focus,
+.offcanvas-game.offcanvas select:active,
+.offcanvas-feedback.offcanvas input:hover,
+.offcanvas-feedback.offcanvas input:focus,
+.offcanvas-feedback.offcanvas input:active,
+.offcanvas-feedback.offcanvas textarea:hover,
+.offcanvas-feedback.offcanvas textarea:focus,
+.offcanvas-feedback.offcanvas textarea:active {
+  box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
+}
+
+/*** Colour for the switch button ***/
+
+.offcanvas-game.offcanvas .form-check-input:checked {
+  background-color: #a5c3ef;
+  border-color: #fff;
+}
+
+.offcanvas-game.offcanvas .form-check-input:focus {
+  box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
+}
+
+/*** 
+Vendor-specific extensions to allow the slider to use the same colours as the rest of the form.
+Code was copied from https://stackoverflow.com/a/56424165
+***/
+
+.form-range::-webkit-slider-thumb {
+  background: #a5c3ef;
+}
+
+.form-range::-webkit-slider-thumb:active {
+  box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
+}
+
+.form-range::-moz-range-thumb {
+  background: #a5c3ef;
+}
+
+.form-range::-moz-range-thumb:active {
+  box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
+}
+
+.form-range::-ms-thumb {
+  background: #a5c3ef;
+}
+
+.form-range::-ms-thumb:active {
+  box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
 }
 
 /* Game area */

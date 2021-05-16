@@ -36,11 +36,12 @@
       -->
       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCreateGame"
         aria-controls="offcanvasCreateGame">Create Game</button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
+      <div class="offcanvas-game offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
         aria-labelledby="offcanvasCreateGameLabel">
         <div class="offcanvas-header">
           <h3 class="offcanvas-title" id="offcanvasCreateGameLabel">Create Game</h3>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
@@ -122,24 +123,23 @@
       -->
       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFeedback"
         aria-controls="offcanvasFeedback">Give Feedback</button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFeedback"
+      <div class="offcanvas-feedback offcanvas offcanvas-start" tabindex="-1" id="offcanvasFeedback"
         aria-labelledby="offcanvasFeedbackLabel">
         <div class="offcanvas-header">
           <h3 class="offcanvas-title" id="offcanvasFeedbackLabel">Give Feedback</h3>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <!-- Most of the HTML code below has been copied from the examples available at https://getbootstrap.com/docs/5.0/forms/overview/ -->
           <form id="form-feedback">
             <div class="mb-3">
               <label for="feedback-name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="feedback-name" name="feedback-name"
-                placeholder="Trivia Masterson" required>
+              <input type="text" class="form-control" id="feedback-name" name="feedback-name" required>
             </div>
             <div class="mb-3">
               <label for="feedback-email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="feedback-email" name="feedback-email"
-                placeholder="trivia.masterson@exampletrivia.com" required>
+              <input type="email" class="form-control" id="feedback-email" name="feedback-email" required>
             </div>
             <div class="mb-3">
               <label for="feedback-textarea" class="form-label">Feedback</label>
