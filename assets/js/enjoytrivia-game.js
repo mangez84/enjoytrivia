@@ -180,7 +180,7 @@ function fetchGameHTML() {
     <div class="container-fluid">
       <div class="row">
         <div class="end-game-area col-12 d-flex justify-content-center">
-          <a href="index.html" class="btn btn-danger">End Game</a>
+          <a href="index.html" class="end-game-anchor btn btn-danger">End Game</a>
         </div>
       </div>
     </div>`;

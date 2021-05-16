@@ -2,7 +2,7 @@
 
 /** Fonts **/
 
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@500;700&display=swap');
 
 /** Headings and paragraphs **/
 
@@ -20,6 +20,55 @@ p {
   font-weight: 500;
 }
 
+/** Buttons and anchors **/
+
+button.btn-primary {
+  color: #151515;
+  background-color: #a5c3ef;
+  border-color: #a5c3ef;
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+button.btn-primary:hover {
+  color: #a5c3ef;
+  background-color: #151515;
+  border-color: #a5c3ef;
+}
+
+button.btn-primary:focus,
+button.btn-primary:active {
+  color: #151515;
+  background-color: #a5c3ef;
+  border-color: #a5c3ef;
+  box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
+}
+
+button.answer-button {
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+button.answer-button.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+button.answer-button.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+a.end-game-anchor.btn-danger {
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 /* Main container */
 
 .main-container {
@@ -30,12 +79,6 @@ p {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-/* Instruction area */
-
-.instruction-area h2 {
-  display: block;
 }
 
 /* Game area */
