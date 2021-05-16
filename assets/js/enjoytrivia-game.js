@@ -114,8 +114,6 @@ Remove the offcanvas backdrop effect from the body when starting the game.
 */
 
 async function displayOpenTriviaQuestions(optionsURI, optionsObject, timeSwitch, timeInterval) {
-  $("body").removeAttr("class data-bs-padding-right style");
-  $(".instruction-area").remove();
   $(".feedback-area").remove();
   $(".game-area").empty();
   $(".game-area").addClass("flex-grow-1 d-flex flex-wrap align-content-between");
