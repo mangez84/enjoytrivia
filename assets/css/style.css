@@ -122,7 +122,7 @@ a.end-game-anchor.btn-danger {
 
 .offcanvas-game.offcanvas .form-check-input:checked {
   background-color: #a5c3ef;
-  border-color: #fff;
+  border-color: #a5c3ef;
 }
 
 .offcanvas-game.offcanvas .form-check-input:focus {
