@@ -1,3 +1,4 @@
+/*jshint esversion: 8 */
 /*
 Function and jQuery event listener for sending feedback to the developer.
 Parts of the code below was copied from https://www.emailjs.com/docs/sdk/send-form/

@@ -32,7 +32,7 @@ async function getOpenTriviaData(optionsURI, optionsObject) {
       }
       optionsObject.type = "";
       let questionsURI = "api.php?category=" + optionsObject.category + "&difficulty=" + optionsObject.difficulty + "&type=" + optionsObject.type + "&amount=" + optionsObject.amount;
-      let alertMessage = "There are not enough questions in the database for your selected options. The game will start with the selected category and the maximum number of questions available. Questions of both types will be displayed."
+      let alertMessage = "There are not enough questions in the database for your selected options. The game will start with the maximum number of questions available for your selected category and difficulty. Questions of both types may be displayed."
       alert(alertMessage);
       return await getOpenTriviaData(questionsURI);
     } else if (response.status === 200 && responseJSON.trivia_categories) {
@@ -123,7 +123,7 @@ async function displayOpenTriviaQuestions(optionsURI, optionsObject, timeSwitch,
   }
   let questionsURI = "api.php?" + optionsURI;
   let questionsRecieved = await getOpenTriviaData(questionsURI, optionsObject);
-  let questionsArray = questionsRecieved.results;
+  let questionsArray = shuffle(questionsRecieved.results);
   let questionIndex = 0;
   displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInterval);
 }
@@ -195,10 +195,12 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
   if (questionIndex < questionsArray.length) {
     let questionCurrent = questionsArray[questionIndex];
     /*
-    Use a function to decode possible HTML entities for the correctAnswer variable. 
+    Use decodeHTML() to decode possible HTML entities for the correctAnswer and incorrectAnswer variables. 
     The variables presented in the DOM are decoded automatically.
     */
     let correctAnswer = decodeHTML(questionCurrent.correct_answer);
+    // Use a variable with the incorrect answer for the time-based mode.
+    let incorrectAnswer = decodeHTML(questionCurrent.incorrect_answers[0]);
     let questionsHTML = `
       <h2 class="text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
       <p class="text-center">${questionCurrent.question}</p>`;
@@ -220,7 +222,7 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
       $(".answer-area-one").html(answersHTML);
     }
     $(".question-area").html(questionsHTML);
-    waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval);
+    waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, incorrectAnswer, timeSwitch, timeInterval);
   } else {
     alert("game finished");
   }
@@ -230,7 +232,7 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
 Function to check if the submitted answer is correct and in that case highlight the button green. 
 */
 
-function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, timeSwitch, timeInterval) {
+function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, incorrectAnswer, timeSwitch, timeInterval) {
   let timeLimitCounter;
   if (timeSwitch) {
     let timeLimit = timeInterval;
@@ -238,8 +240,10 @@ function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, tim
     timeLimitCounter = setInterval(() => {
       $("p.score-area-time").html(--timeLimit);
       if (timeLimit === 0) {
-        // Trigger a click on a button that does not contain the correct answer if the time limit expires.
-        $(".answer-button").not(".answer-button:contains(" + correctAnswer + ")").first().trigger("click");
+        // Trigger a click on a button with the incorrect answer if the time limit expires.
+        $(".answer-button").filter(function () {
+          return $(this).text() === incorrectAnswer;
+        }).trigger("click");
         // Unbind the buttons to prevent unexpected behaviour when clicking the buttons multiple times after timeout.
         $(".answer-button").unbind("click");
       }
@@ -251,7 +255,13 @@ function waitForAndCheckAnswer(questionsArray, questionIndex, correctAnswer, tim
     }
     let submittedAnswer = $(this).html();
     let questionResult = submittedAnswer === correctAnswer ? "correct" : "incorrect";
-    $(".answer-button:contains(" + correctAnswer + ")").removeClass("btn-primary").addClass("btn-success");
+    /*
+    Use jQuery filter() and text() methods to get an exact match of the correct answer.
+    Code was copied from https://forum.jquery.com/topic/contains-but-i-want-exact-how
+    */
+    $(".answer-button").filter(function () {
+      return $(this).text() === correctAnswer;
+    }).removeClass("btn-primary").addClass("btn-success");
     $(".answer-button").not(".btn-success").removeClass("btn-primary").addClass("btn-danger");
     addScore(questionResult);
     questionIndex += 1;
