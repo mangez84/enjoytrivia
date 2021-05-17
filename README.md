@@ -86,7 +86,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ### Features Left to Implement
 
-- None at the moment.
+- Getting the same questions in different rounds of the game rarely happens.
 
 ## Technologies Used
 
