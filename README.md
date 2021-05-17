@@ -93,13 +93,30 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 
-### Frameworks, Libraries and Software Used
+### Frameworks, Libraries, APIs and Software Used
 
 - [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
     - The project uses the grid system, flex utilities, the offcanvas component and forms from the Bootstrap 5.0 framework.
+- [jQuery](https://jquery.com/)
+    - jQuery is used as a complement to standard JavaScript for DOM selection and manipulation.
+- [Open Trivia Database](https://opentdb.com/)
+    - The game is built around the [Open Trivia Database API](https://opentdb.com/api_config.php). All categories, questions and answers are retrieved from this API. The API is free to use for developers and is well documented.
+- [EmailJS](https://www.emailjs.com/)
+    - The EmailJS SDK is used to send feedback to the developer via email. The SDK is easy to use and enables a secure way to send email with JavaScript.
+- [Git](https://git-scm.com/)
+    - Git is used to keep track of changes in the project code.
+- [Github](https://github.com/)
+    - The code is stored in Github and the web application is hosted on GitHub Pages.
+- [Gitpod](https://gitpod.io/)
+    - Gitpod was used as a development environment throughout the project.
+- [Balsamiq](https://balsamiq.com/)
+    - Wireframes for the project were created with Balsamiq.
+- [Google Fonts](https://fonts.google.com/)
+    - The Exo font used in the project is imported from Google Fonts.
 - [favicon.io](https://favicon.io/)
-    - The favicon used on the website was generated at [favicon.io](https://favicon.io/).
+    - The favicon used on the website was generated on [favicon.io](https://favicon.io/).
 
 ## Test
 
