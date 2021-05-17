@@ -29,6 +29,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
     - [Content](#content)
     - [Media](#media)
         - [Images](#images)
+    - [Acknowledgments](#acknowledgments)
 
 ## UX
 
@@ -133,12 +134,16 @@ See separate file [TEST.md](TEST.md#test) for information on completed tests and
 - The function for decoding HTML entities was copied from this [Stack Overflow](https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787#7394787) post.
 - The code for changing the colour of the range slider was found in this [Stack Overflow](https://stackoverflow.com/a/56424165) post.
 - The code for solving the bug with multiple correct answers was copied from this [jQuery Forum](https://forum.jquery.com/topic/contains-but-i-want-exact-how) post.
-- The code for the balloons when finishing the game was copied from [Bennett Feely on codepen.io](https://codepen.io/bennettfeely/pen/nbFCp).
+- The code showing the balloon when the player reaches the maximum number of points was copied from [Bennett Feely on codepen.io](https://codepen.io/bennettfeely/pen/nbFCp).
 
 ### Content
+
+- A large part of the text content is retrieved from the Open Trivia Database API. The JSON response is used to populate the game with questions and answer options. All other text content is written by the developer.
 
 ### Media
 
 #### Images
 
 - The background image was obtained from [Gerd Altmann on Pixabay](https://pixabay.com/illustrations/board-questions-who-what-how-why-776688/).
+
+### Acknowledgments
