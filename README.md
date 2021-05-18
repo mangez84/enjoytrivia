@@ -16,6 +16,10 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
         - [Frequent Player Goals](#frequent-player-goals)
     - [Developer Goals](#developer-goals)
     - [Design](#design)
+        - [Inspiration](#inspiration)
+        - [Background](#background)
+        - [Colours](#colours)
+        - [Fonts](#fonts)
     - [Wireframes](#wireframes)
 2. [Features](#features)
     - [Existing Features](#existing-features)
@@ -63,6 +67,22 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - Create a good gaming experience that is also a source of knowledge.
 
 ### Design
+
+#### Inspiration
+
+- Inspiration for the game mechanics and some of the design choices come from the Swedish game [Quizkampen](http://www.quizkampen.se/). Try it out! :)
+
+#### Background
+
+- The background was chosen for its clear connection to questions and the search for knowledge. With CSS styling, the background becomes darker to make the text content clearly visible.
+
+#### Colours
+
+- The blue colour was chosen as the combination with the dark background gives a nice impression. Green and red are used to highlight correct and incorrect answers and also fit the dark background well.
+
+#### Fonts
+
+- The Exo font was chosen because it gives a playful impression and thus fits well for a game. The font is easy to read and is used for both headings and other text content in the web application.
 
 ### Wireframes
 
@@ -143,7 +163,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ### Content
 
-- A large part of the text content is retrieved from the Open Trivia Database API. The JSON response is used to populate the game with questions and answer options. All other text content is written by the developer.
+- A large part of the text content is retrieved from the Open Trivia Database API. The JSON response is used to populate the game with questions and answer options. All other text content has been written by the developer.
 
 ### Media
 
@@ -152,3 +172,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - The background image was obtained from [Gerd Altmann on Pixabay](https://pixabay.com/illustrations/board-questions-who-what-how-why-776688/).
 
 ### Acknowledgments
+
+- My wife who has supported and advised me during the project.
+- My stepdaughter who is the only one in the family who owns an iPhone and who has contributed with valuable tests on this device.
+- My Code Institute mentor Gerard McBride for helpful and encouraging mentor sessions.
