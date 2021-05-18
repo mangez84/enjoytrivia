@@ -109,7 +109,10 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ### Features Left to Implement
 
-- Getting the same questions in different rounds of the game rarely happens.
+*Due to time constraints, the following feature will not be implemented until the next version of the web application is released.*
+
+- A feature that ensures that the player does not get the same question twice. 
+    - This can be solved by retrieving a session token from the API. As long as there are questions left in the database that have not been returned, the session token ensures that you never get the same question twice.
 
 ## Technologies Used
 
