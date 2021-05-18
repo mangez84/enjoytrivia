@@ -250,10 +250,19 @@ The code for the balloon was copied from https://codepen.io/bennettfeely/pen/nbF
   background: rgba(255, 255, 255, 1);
 }
 
-/* Answer area */
+/* 
+Answer area
+The fix for truncating text in flex items was found here https://css-tricks.com/flexbox-truncated-text/
+*/
 
 .btn-container {
   min-width: 50%;
+}
+
+.answer-button {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 
