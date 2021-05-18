@@ -35,6 +35,7 @@
     - The code for the game was validated by pasting the contents of the JavaScript file into JSHint.
     - The validation tool did not report any warnings or errors.
     - JSHint was configured with the following comments.
+
         ```
         /* jshint esversion: 8 */ 
         /* globals $:false */
@@ -43,6 +44,7 @@
     - The feedback function was validated by pasting the contents of the JavaScript file into JSHint.
     - The validation tool did not report any warnings or errors.
     - JSHint was configured with the following comments.
+
         ```
         /* jshint esversion: 8 */ 
         /* global emailjs */
