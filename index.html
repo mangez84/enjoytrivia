@@ -17,14 +17,14 @@
 <body>
   <!-- Main container for positioning elements with Bootstrap v5.0 flex utilities. https://getbootstrap.com/docs/5.0/utilities/flex/ -->
   <div class="main-container min-vh-100 d-flex flex-wrap flex-column justify-content-between align-items-center">
-    <header class="game-header my-3">
+    <header class="game-header mt-5 mb-3">
       <h1>EnjoyTrivia!</h1>
     </header>
     <section class="game-area d-flex flex-wrap justify-content-center">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-4 offset-md-4 d-flex justify-content-center">
-            <h2>Game Instructions</h2>
+            <h2 class="text-center">Game Instructions</h2>
           </div>
           <div class="col-md-4 offset-md-4 text-center">
             <p>Welcome to EnjoyTrivia! To start a game, click the button below and select a category, difficulty, type
@@ -37,8 +37,8 @@
       This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
       for the "Create Game" section.
       -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCreateGame"
-        aria-controls="offcanvasCreateGame">Create Game</button>
+      <button class="btn btn-primary mb-3" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasCreateGame" aria-controls="offcanvasCreateGame">Create Game</button>
       <div class="offcanvas-game offcanvas offcanvas-start" tabindex="-1" id="offcanvasCreateGame"
         aria-labelledby="offcanvasCreateGameLabel">
         <div class="offcanvas-header">
@@ -111,7 +111,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-4 offset-md-4 d-flex justify-content-center">
-            <h2>Feedback</h2>
+            <h2 class="text-center">Feedback</h2>
           </div>
           <div class="col-md-4 offset-md-4 text-center">
             <p>If you want to give the developer feedback about the game, click the button below and fill out the form.
@@ -124,7 +124,7 @@
       This code was copied from https://getbootstrap.com/docs/5.0/components/offcanvas/ and later modified to create the offcanvas component 
       for the "Instructions" section.
       -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFeedback"
+      <button class="btn btn-primary mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFeedback"
         aria-controls="offcanvasFeedback">Give Feedback</button>
       <div class="offcanvas-feedback offcanvas offcanvas-start" tabindex="-1" id="offcanvasFeedback"
         aria-labelledby="offcanvasFeedbackLabel">
@@ -158,7 +158,7 @@
       </div>
     </section>
     <footer class="game-copyright my-3">
-      <p>© 2021 EnjoyTrivia!</p>
+      <p class="text-center">© 2021 EnjoyTrivia!</p>
     </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"

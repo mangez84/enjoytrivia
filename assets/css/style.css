@@ -1,10 +1,14 @@
 /* General settings */
 
-/** Fonts **/
+/* Fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@500;600;700&display=swap');
 
-/** Headings and paragraphs **/
+/* Headings and paragraphs */
+
+h1 {
+  font-size: 2.5em;
+}
 
 h1,
 h2,
@@ -24,7 +28,7 @@ footer p {
   font-weight: 700;
 }
 
-/** Buttons and anchors **/
+/* Buttons and anchors */
 
 button.btn-primary {
   color: #151515;
@@ -85,9 +89,7 @@ a.end-game-anchor.btn-danger {
   background-repeat: no-repeat;
 }
 
-/* Offcanvas components */
-
-/** Create Game and Give Feedback **/
+/* Offcanvas components "Create Game" and "Give Feedback" */
 
 .offcanvas-game.offcanvas,
 .offcanvas-feedback.offcanvas {
@@ -118,7 +120,7 @@ a.end-game-anchor.btn-danger {
   box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
 }
 
-/*** Colour for the switch button ***/
+/* Colour for the switch button */
 
 .offcanvas-game.offcanvas .form-check-input:checked {
   background-color: #a5c3ef;
@@ -129,10 +131,10 @@ a.end-game-anchor.btn-danger {
   box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
 }
 
-/*** 
-Vendor-specific extensions to allow the slider to use the same colours as the rest of the form.
+/*
+Vendor-specific extensions to allow the slider to use the same colours as the rest of the form
 Code was copied from https://stackoverflow.com/a/56424165
-***/
+*/
 
 .form-range::-webkit-slider-thumb {
   background: #a5c3ef;
@@ -158,29 +160,45 @@ Code was copied from https://stackoverflow.com/a/56424165
   box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
 }
 
-/* Game area */
-
-/** Score area **/
-
-/*** Make the heading and paragraph display side by side ***/
+/*
+Score area 
+Make the heading and paragraph display side by side
+*/
 
 .score-area h3,
 .score-area p {
-  display: inline-block;
+  display: inline-flex;
 }
 
-/** Answer area **/
-
-.btn-container {
-  min-width: 50%;
+.score-area h3 {
+  margin: 0 .5rem 0 .5rem;
 }
 
-/** Question area **/
+.score-area p {
+  font-size: 1.2em;
+}
 
-/***
-Display balloons when finishing the game.
+.score-area-correct,
+.score-area-points {
+  color: #28a745;
+}
+
+.score-area-incorrect,
+p.score-area-time {
+  color: #dc3545;
+}
+
+/*
+Question area
+Display a balloon when finishing the game with maximum points
+The balloon ribbon has been shortened as it is not very responsive
 The code for the balloon was copied from https://codepen.io/bennettfeely/pen/nbFCp
-***/
+*/
+
+.question-area p {
+  font-weight: 600;
+  font-size: 1.2em;
+}
 
 .balloon {
   display: inline-block;
@@ -223,11 +241,31 @@ The code for the balloon was copied from https://codepen.io/bennettfeely/pen/nbF
 
 .balloon:after {
   display: block;
-  top: 153px;
+  top: 150px;
   position: relative;
-  height: 250px;
+  height: 100px;
   width: 1px;
   margin: 0 auto;
   content: "";
   background: rgba(255, 255, 255, 1);
+}
+
+/* Answer area */
+
+.btn-container {
+  min-width: 50%;
+}
+
+/* 
+Media queries 
+Only used for really small screens 
+*/
+
+@media screen and (max-width: 300px) {
+
+  .answer-area-one,
+  .answer-area-two {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 }

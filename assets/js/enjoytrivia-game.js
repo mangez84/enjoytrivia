@@ -141,7 +141,7 @@ function fetchGameHTML() {
         </div>
       </div>
       <div class="row">
-        <div class="score-area col-lg-6 d-flex justify-content-around">
+        <div class="score-area col-lg-6 d-flex flex-wrap justify-content-around">
           <div>
             <h3>Correct:</h3>
             <p class="score-area-correct">0</p>
@@ -151,7 +151,7 @@ function fetchGameHTML() {
             <p class="score-area-incorrect">0</p>
           </div>
         </div>
-        <div class="score-area col-lg-6 d-flex justify-content-around">
+        <div class="score-area col-lg-6 d-flex flex-wrap justify-content-around">
           <div>
             <h3>Points:</h3>
             <p class="score-area-points">0</p>
@@ -179,7 +179,7 @@ function fetchGameHTML() {
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="end-game-area col-12 d-flex justify-content-center">
+        <div class="end-game-area col-12 d-flex justify-content-center mb-3">
           <a href="index.html" class="end-game-anchor btn btn-danger">End Game</a>
         </div>
       </div>
@@ -202,7 +202,7 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
     // Use a variable with the incorrect answer for the time-based mode.
     let incorrectAnswer = decodeHTML(questionCurrent.incorrect_answers[0]);
     let questionsHTML = `
-      <h2 class="text-center">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
+      <h2 class="text-center mb-3">Question: ${questionIndex + 1} / ${questionsArray.length}</h2>
       <p class="text-center">${questionCurrent.question}</p>`;
     let answersArray = questionCurrent.incorrect_answers;
     answersArray.push(correctAnswer);
@@ -230,17 +230,17 @@ function displayNextQuestion(questionsArray, questionIndex, timeSwitch, timeInte
     let finishHTML;
     if (playerPoints === 0) {
       finishHTML = `
-      <h2 class="text-center">Wooops!</h2>
+      <h2 class="text-center mb-3">Wooops!</h2>
       <p class="text-center">You did not answer any questions correctly! Better luck next time!</p>`;
     } else if (playerPoints === maxPoints) {
       finishHTML = `
-      <h2 class="text-center">Congratulations!</h2>
+      <h2 class="text-center mb-3">Congratulations!</h2>
       <p class="text-center">You finished the game with ${playerPoints} points! Since this is the maximum number of points for this round, you will get a balloon!</p>
       <div class="d-flex justify-content-around">
         <div class="balloon"></div>`;
     } else {
       finishHTML = `
-      <h2 class="text-center">Hurray!</h2>
+      <h2 class="text-center mb-3">Hurray!</h2>
       <p class="text-center">You finished the game with ${playerPoints} points!</p>`;
     }
     $(".answer-area-one").remove();
