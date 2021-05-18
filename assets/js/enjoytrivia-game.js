@@ -1,4 +1,3 @@
-/*jshint esversion: 8 */
 /*
 Main function to obtain data from the API.
 Call this function to build a complete URL and to obtain data.  

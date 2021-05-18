@@ -1,6 +1,8 @@
-# Enjoy Trivia!
+# EnjoyTrivia!
 
-[Enjoy Trivia!](https://mangez84.github.io/enjoytrivia/) is a game for anyone who is curious and not afraid of a challenge. 
+![EnjoyTrivia!](assets/images/enjoytrivia.png)
+
+[EnjoyTrivia!](https://mangez84.github.io/enjoytrivia/) is a game for anyone who is curious and not afraid of a challenge. 
 
 If you want to prove your knowledge, select the desired category, difficulty and number of questions and start playing!
 
@@ -13,6 +15,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
         - [New Player Goals](#new-player-goals)
         - [Frequent Player Goals](#frequent-player-goals)
     - [Developer Goals](#developer-goals)
+    - [Design](#design)
     - [Wireframes](#wireframes)
 2. [Features](#features)
     - [Existing Features](#existing-features)
@@ -21,10 +24,8 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
     - [Languages Used](#languages-used)
     - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
 4. [Test](#test)
-    - [Known Bugs](TEST.md#known-bugs)
-        - [Solved](TEST.md#solved)
-        - [Unsolved](TEST.md#unsolved)
-5. [Credits](#credits)
+5. [Deployment](#deployment)
+6. [Credits](#credits)
     - [Code](#code)
     - [Content](#content)
     - [Media](#media)
@@ -60,6 +61,8 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - Create a well-structured website with good error handling and clear feedback to users.
 - Have fun working with APIs.
 - Create a good gaming experience that is also a source of knowledge.
+
+### Design
 
 ### Wireframes
 
@@ -121,7 +124,9 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ## Test
 
-See separate file [TEST.md](TEST.md#test) for information on completed tests and results from these.
+- See separate file [TEST.md](TEST.md#test) for information on completed tests and results from these.
+
+## Deployment
 
 ## Credits
 

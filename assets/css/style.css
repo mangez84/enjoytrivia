@@ -33,7 +33,7 @@ footer p {
 button.btn-primary {
   color: #151515;
   background-color: #a5c3ef;
-  border-color: #a5c3ef;
+  border-color: #a9c6f1;
   font-family: 'Exo', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
@@ -49,7 +49,7 @@ button.btn-primary:focus,
 button.btn-primary:active {
   color: #151515;
   background-color: #a5c3ef;
-  border-color: #a5c3ef;
+  border-color: #a9c6f1;
   box-shadow: 0 0 0 .25rem rgba(165, 195, 239, .25);
 }
 
@@ -62,13 +62,13 @@ button.answer-button {
 button.answer-button.btn-success {
   color: #fff;
   background-color: #28a745;
-  border-color: #28a745;
+  border-color: #29aa47;
 }
 
 button.answer-button.btn-danger {
   color: #fff;
   background-color: #dc3545;
-  border-color: #dc3545;
+  border-color: #df3748;
 }
 
 a.end-game-anchor.btn-danger {
@@ -124,7 +124,7 @@ a.end-game-anchor.btn-danger {
 
 .offcanvas-game.offcanvas .form-check-input:checked {
   background-color: #a5c3ef;
-  border-color: #a5c3ef;
+  border-color: #a9c6f1;
 }
 
 .offcanvas-game.offcanvas .form-check-input:focus {
