@@ -80,6 +80,8 @@
 
 - The game does not work at all in IE11.
 - Some questions with very long content may grow into the button next to it.
-- On iPhone with the Safari browser, one of the answer buttons is in a hovered state even if the player is idle. I have not been able to reproduce this since I do not own an iPhone. ![iPhone](assets/images/iphone.jpg)
+- On iPhone with the Safari browser, one of the answer buttons is in a hovered state even if the player is idle. I have not been able to reproduce this since I do not own an iPhone.
+
+    ![iPhone](assets/images/iphone.jpg)
 
 Back to the [README.md](README.md) file.

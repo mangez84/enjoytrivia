@@ -28,6 +28,16 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
     - [Languages Used](#languages-used)
     - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
 4. [Test](#test)
+    - [Validation Services](TEST.md#validation-services)
+        - [W3C Markup Validation Service](TEST.md#w3c-markup-validation-service)
+        - [W3C CSS Validation Service](TEST.md#w3c-css-validation-service)
+        - [JSHint](TEST.md#jshint)
+    - [Testing User Stories For New Players](TEST.md#testing-user-stories-for-new-players)
+    - [Testing User Stories For Frequent Players](TEST.md#testing-user-stories-for-frequent-players)
+    - [Further Testing](TEST.md#further-testing)
+    - [Known Bugs](TEST.md#known-bugs)
+        - [Fixed](TEST.md#fixed)
+        - [Unfixed](TEST.md#unfixed)
 5. [Deployment](#deployment)
 6. [Credits](#credits)
     - [Code](#code)
@@ -147,7 +157,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ## Test
 
-- See separate file [TEST.md](TEST.md#test) for information on completed tests and results from these.
+- See separate file [TEST.md](TEST.md) for information on completed tests and results from these.
 
 ## Deployment
 
