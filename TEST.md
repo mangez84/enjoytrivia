@@ -153,4 +153,4 @@
 
     ![iPhone](assets/images/iphone.jpg)
 
-Back to the [README.md](README.md#test) file.
+Back to the [README.md](README.md) file.
