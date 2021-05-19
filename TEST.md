@@ -12,7 +12,6 @@
     - [Further Testing](#further-testing)
     - [Known Bugs](#known-bugs)
         - [Fixed](#fixed)
-        - [Workarounds](#workarounds)
         - [Unfixed](#unfixed)
 
 ## Test
@@ -72,16 +71,18 @@
 
 ### Further Testing
 
+- The web application has been tested on Google Chrome, Mozilla Firefox, Microsoft Edge, Microsoft Internet Explorer 11 and Safari were used to test the website.
+- Tests have been performed on a laptop, a laptop with a larger screen connected and various smartphones including both Android and iPhone devices.
+- Friends and family members used their laptops and smartphones to test the website for bugs and other issues.
+- Tests to ensure the website's responsiveness were carried out continuously during the development work.
+
 ### Known Bugs
 
 #### Fixed
 
 - Some questions returned from the OpenTriviaDB API contain [HTML entities](https://www.w3schools.com/html/html_entities.asp) but these are decoded if the string is presented in the DOM. The variable used for the correct answer is not presented in the DOM, which resulted in that the comparison between the correct and submitted answer sometimes failed. This was fixed using a function that decodes the HTML entities in the string containing the correct answer.
 - The jQuery [:contains()](https://api.jquery.com/contains-selector/) selector used to mark the correct answer sometimes marked several answers as correct. This could happen if the correct answer is a substring of an incorrect answer. The bug was solved with the help of this [jQuery Forum](https://forum.jquery.com/topic/contains-but-i-want-exact-how) post.
-
-#### Workarounds
-
-- Some answers have single words that are very long and can cause the content to overflow and grow into the button next to it. The workaorund is to truncate the text in these cases. This [CSS-Tricks](https://css-tricks.com/flexbox-truncated-text/) post has valuable information on how to handle this issue.
+- Some questions and answers have single words that are very long and can cause the content to overflow. [Google](https://google.com) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap) helped me solve this issue.
 
 #### Unfixed
 

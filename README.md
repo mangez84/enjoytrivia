@@ -37,7 +37,6 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
     - [Further Testing](TEST.md#further-testing)
     - [Known Bugs](TEST.md#known-bugs)
         - [Fixed](TEST.md#fixed)
-        - [Workarounds](TEST.md#workarounds)
         - [Unfixed](TEST.md#unfixed)
 5. [Deployment](#deployment)
 6. [Credits](#credits)
@@ -138,6 +137,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - It is possible to send feedback to the developer using a form.
 
     ![Give Feedback](assets/images/give-feedback.png)
+
 - The game can be played on computers, tablets and smartphones.
 
 ### Features Left to Implement
@@ -198,7 +198,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - The code for changing the colour of the range slider was found in this [Stack Overflow](https://stackoverflow.com/a/56424165) post.
 - The code for solving the bug with multiple correct answers was copied from this [jQuery Forum](https://forum.jquery.com/topic/contains-but-i-want-exact-how) post.
 - The code showing the balloon when the player reaches the maximum number of points was copied from [Bennett Feely on codepen.io](https://codepen.io/bennettfeely/pen/nbFCp).
-- The code and valuable information about truncating text in flex items was found in this [CSS-Tricks](https://css-tricks.com/flexbox-truncated-text/) post.
+- Valuable information about overflowing text and how to solve it was found in this [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap) article.
 
 ### Content
 

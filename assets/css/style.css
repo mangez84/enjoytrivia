@@ -198,6 +198,7 @@ The code for the balloon was copied from https://codepen.io/bennettfeely/pen/nbF
 .question-area p {
   font-weight: 600;
   font-size: 1.1em;
+  overflow-wrap: anywhere;
 }
 
 .balloon {
@@ -252,7 +253,8 @@ The code for the balloon was copied from https://codepen.io/bennettfeely/pen/nbF
 
 /* 
 Answer area
-The fix for truncating text in flex items was found here https://css-tricks.com/flexbox-truncated-text/
+Information on how to solve overflowing text was found on 
+https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap
 */
 
 .btn-container {
@@ -260,9 +262,7 @@ The fix for truncating text in flex items was found here https://css-tricks.com/
 }
 
 .answer-button {
-  width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }
 
 /* 
