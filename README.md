@@ -199,6 +199,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 - The code for solving the bug with multiple correct answers was copied from this [jQuery Forum](https://forum.jquery.com/topic/contains-but-i-want-exact-how) post.
 - The code showing the balloon when the player reaches the maximum number of points was copied from [Bennett Feely on codepen.io](https://codepen.io/bennettfeely/pen/nbFCp).
 - Valuable information about overflowing text and how to solve it was found in this [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap) article.
+- The code for resetting a form after submit was copied from this [Stack Overflow](https://stackoverflow.com/a/8701877) post.
 
 ### Content
 

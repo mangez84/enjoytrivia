@@ -71,10 +71,12 @@
 
 ### Further Testing
 
-- The web application has been tested on Google Chrome, Mozilla Firefox, Microsoft Edge, Microsoft Internet Explorer 11 and Safari were used to test the website.
-- Tests have been performed on a laptop, a laptop with a larger screen connected and various smartphones including both Android and iPhone devices.
-- Friends and family members used their laptops and smartphones to test the website for bugs and other issues.
-- Tests to ensure the website's responsiveness were carried out continuously during the development work.
+- The web application has been tested on Google Chrome, Mozilla Firefox and Microsoft Edge by the developer. The tests show that the web application looks and behaves similarly on these browsers.
+- Internet Explorer 11 has also been tested. Read more under [Known Bugs - Unfixed](#unfixed).
+- Tests have been done on an iPhone 8 device with the Safari browser. Read more under [Known Bugs - Unfixed](#unfixed).
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) has been used for testing and debugging purposes.
+- Throughout the development work, the responsiveness of the web application was tested continuously.
+- Tests have also been done on the deployed version available on GitHub Pages.
 
 ### Known Bugs
 
@@ -86,8 +88,8 @@
 
 #### Unfixed
 
-- The two columns for the answer buttons can vary in size depending on the content.
-- The game does not work at all in IE11. This will probably not be a priority when the next version of the web application is developed.
+- The two columns for the answer buttons can vary in size depending on the content. This may look strange in some cases.
+- The game does not work at all in IE11. This will however not be a priority when the next version of the web application is developed.
 - On iPhone with the Safari browser, one of the answer buttons is in a hovered state even if the player is idle. I have not been able to reproduce this since I do not own an iPhone.
 
     ![iPhone](assets/images/iphone.jpg)
