@@ -85,7 +85,8 @@
 
 #### Unfixed
 
-- The game does not work at all in IE11.
+- The two columns for the answer buttons can vary in size depending on the content.
+- The game does not work at all in IE11. This will probably not be a priority when the next version of the web application is developed.
 - On iPhone with the Safari browser, one of the answer buttons is in a hovered state even if the player is idle. I have not been able to reproduce this since I do not own an iPhone.
 
     ![iPhone](assets/images/iphone.jpg)

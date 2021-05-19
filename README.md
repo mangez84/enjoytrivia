@@ -108,15 +108,37 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 ### Existing Features
 
 - Clear navigation which makes it easy to start a game.
+
+    ![Index Page Navigation](assets/images/index-page-navigation.png)
+
 - Options are available to configure the game with the desired category, difficulty and number of questions.
 - The type option can be used to select multiple choice questions or true or false questions.
+
+    ![Create Game Options](assets/images/create-game-options.png)
+    
 - A scoreboard that shows the number of correct and incorrect answers.
-- The game can be played on computers, tablets and smartphones.
+
+    ![Play Game Scoreboard](assets/images/play-game-score.png)
+
 - Good visual feedback when a question is answered correctly or incorrectly.
-- It is possible to send feedback to the developer using a form.
-- A time-based mode that further challenges the player.
 - A source of knowledge because the correct answer is highlighted if the player should answer incorrectly.
+
+    ![Play Game Highlight](assets/images/play-game-highlight.png)
+
+- A time-based mode that further challenges the player.
+
+    ![Create Game Time](assets/images/create-game-time.png)
+
+    ![Play Game Time](assets/images/play-game-time.png)
+
 - If all questions are answered correctly, the player is rewarded with a celebration.
+
+    ![Play Game Max Points](assets/images/play-game-maxpoints.png)
+
+- It is possible to send feedback to the developer using a form.
+
+    ![Give Feedback](assets/images/give-feedback.png)
+- The game can be played on computers, tablets and smartphones.
 
 ### Features Left to Implement
 
@@ -155,6 +177,8 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
     - The Exo font used in the project is imported from Google Fonts.
 - [favicon.io](https://favicon.io/)
     - The favicon used on the website was generated on [favicon.io](https://favicon.io/).
+- [WebAIM](https://webaim.org/resources/contrastchecker/)
+    - This tool was used to check the contrast ratio between the background and the text content.
 
 ## Test
 
