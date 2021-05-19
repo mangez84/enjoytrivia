@@ -26,7 +26,7 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
     - [Features Left to Implement](#features-left-to-implement)
 3. [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
-    - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
+    - [Frameworks, Libraries and Software Used](#frameworks-libraries-apis-and-software-used)
 4. [Test](#test)
     - [Validation Services](TEST.md#validation-services)
         - [W3C Markup Validation Service](TEST.md#w3c-markup-validation-service)
