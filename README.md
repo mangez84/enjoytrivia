@@ -186,6 +186,41 @@ Let the [fun](https://mangez84.github.io/enjoytrivia/) begin!
 
 ## Deployment
 
+### Github Pages
+
+EnjoyTrivia! was deployed to GitHub Pages using the following procedure.
+
+- Log into [GitHub](https://github.com/) and click on the [repository](https://github.com/mangez84/enjoytrivia) named **enjoytrivia**.
+- Click on the **Settings** button in the repository navigation bar.
+- Scroll down and click on the **Pages** link to the left.
+- Under **Source** click the button named **None** and choose **master** in the dropdown menu.
+- Click the **Save** button.
+- A [link](https://mangez84.github.io/enjoytrivia/) to the published site is displayed.
+
+### Fork the GitHub Repository
+
+To make a **fork** of this repository to your own account use the following procedure.
+
+- Log into your [GitHub](https://github.com/) account and browse to [this repository](https://github.com/mangez84/enjoytrivia).
+- Locate the **Fork** button in the upper right corner and click it.
+- You should now have a copy of the repository in your own account.
+
+### Clone the GitHub Repository
+
+To make a **clone** of this repository use the following procedure.
+
+- Log into your [GitHub](https://github.com/) account and browse to the [repository](https://github.com/mangez84/enjoytrivia).
+- Locate the **Code** button and click it.
+- Choose **Download ZIP** from the dropdown menu to download the project as a compressed file or copy the **HTTPS** link.
+- If you copied the HTTPS link open a terminal with access to [`git`](https://git-scm.com/).
+- Navigate to or create a desired working directory for the project.
+- Type **git clone** followed by the HTTPS link you copied.
+
+    ```
+    git clone https://github.com/mangez84/enjoytrivia
+    ```
+- Press Enter and a local clone will be created in your current working directory.
+
 ## Credits
 
 ### Code
