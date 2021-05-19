@@ -260,7 +260,7 @@ The fix for truncating text in flex items was found here https://css-tricks.com/
 }
 
 .answer-button {
-  min-width: 0;
+  width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
